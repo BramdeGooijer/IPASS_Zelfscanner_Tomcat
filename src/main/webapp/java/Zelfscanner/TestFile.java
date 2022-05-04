@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/zelfscannerkaas")
-public class ZelfscannerServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/btnValue2")
+public class TestFile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().println("Hij doet het!");
+        resp.getWriter().println("zeventien dwergen");
     }
 }
