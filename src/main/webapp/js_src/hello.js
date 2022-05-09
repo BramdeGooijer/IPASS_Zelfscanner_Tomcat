@@ -10,11 +10,4 @@ if (navigator.mediaDevices.getUserMedia) {
         })
 } else {
     console.log('getUserMedia not supported!');
-
-}
-
-window.addEventListener('load', () => init());
-
-function init() {
-    console.log('hoi');
 }
