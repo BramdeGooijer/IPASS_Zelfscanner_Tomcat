@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Zelfscanner</title>
     <link rel="stylesheet" href="Styles/index.css">
+    <script type="module" src="/js_src/webcam.js"></script>
 </head>
 <body>
     <div id="gridcontainer">
@@ -18,12 +19,31 @@
                     </video>
                 </div>
             </div>
-            <div class="box2" id="consoleContainer">
-
+            <div class="box2" id="keyPadContainer">
+                <div id="keyPad">
+                    <input class="keyPadItem" type="text" value="Productcode" id="productCodeVeld">
+                    <div class="numberItem keyPadItem">7</div>
+                    <div class="numberItem keyPadItem">8</div>
+                    <div class="numberItem keyPadItem">9</div>
+                    <div class="numberItem keyPadItem">4</div>
+                    <div class="numberItem keyPadItem">5</div>
+                    <div class="numberItem keyPadItem">6</div>
+                    <div class="numberItem keyPadItem">1</div>
+                    <div class="numberItem keyPadItem">2</div>
+                    <div class="numberItem keyPadItem">3</div>
+                    <div class="numberItem keyPadItem" id="numberZero">0</div>
+                    <div class="keyPadItem" id="backSpace">&lt;</div>
+                    <div class="keyPadItem" id="enter"><p id="enterText">Enter</p></div>
+                </div>
             </div>
         </div>
         <div class="box" id="rightSide">
-            <h1>hio</h1>
+            <div class="box2" id="productListContainer">
+                <h1>productListContainer</h1>
+            </div>
+            <div class="box2" id="paymentContainer">
+                <h1>paymentContainer</h1>
+            </div>
         </div>
     </div>
 </body>

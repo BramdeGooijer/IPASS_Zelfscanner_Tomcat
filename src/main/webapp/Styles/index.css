@@ -1,3 +1,9 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Fira Sans Condensed",Arial,Georgia,serif;
+}
+
 .box {
     border-style: solid;
     border-color: red;
@@ -10,32 +16,130 @@
 
 #gridcontainer {
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    height: 100vh;
+    width:100vw;
 }
 
 #titlePart {
-    grid-column: 1 / 11;
+    grid-column: 1 / 13;
+    grid-row: 1 / 1;
 }
 
 #leftSide {
-    grid-column: 1 / 4;
-    /*height: 87.5vh;*/
+    grid-column: 1 / 6;
+    grid-row: 2 / 11;
+
+
 }
 
 #rightSide {
-    grid-column: 4 / 11;
-    /*height: 87.5vh;*/
+    grid-column: 6 / 13;
+    grid-row: 2 / 11;
+}
+
+#cameraContainer {
+    height: 45%;
+    box-sizing: border-box;
+}
+
+#keyPadContainer {
+    height: 55%;
+    box-sizing: border-box;
 }
 
 #cameraBorder {
     margin: auto;
-    width: 500px;
-    height: 375px;
+    width: 62.31%;
+    height: 100%;
     border: 5px #333 solid;
+
+    box-sizing: border-box;
 }
 
 #videoElement {
-    width: 500px;
-    height: 375px;
+    width: 100%;
+    height: 100%;
     background-color: #666;
+
+    box-sizing: border-box;
+}
+
+
+#keyPad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 15px;
+    height: 95%;
+    width: 95%;
+
+    box-sizing: border-box;
+}
+
+#productCodeVeld {
+    font-size: 30px;
+    padding: 5px;
+    margin: 2px;
+    border-style: solid;
+    grid-column: 1 / 5;
+
+    background-color: white;
+}
+
+#backSpace {
+    border-style: solid;
+    margin: 3px;
+    text-align: center;
+    padding: 10% 0 0 0;
+    font-size: 50px;
+}
+
+#enter {
+    border-style: solid;
+    text-align: center;
+    grid-column: 4 /4;
+    grid-row: 2 / 6;
+    margin: 3px;
+}
+
+#enterText {
+    margin: 90% 0%;
+    font-size: 50px;
+}
+
+.numberItem {
+    border-style: solid;
+    text-align: center;
+    margin: 3px;
+    font-size: 50px;
+    padding: 10% 0 0 0;
+}
+
+.keyPadItem:hover {
+    background-color: #f5821f;
+}
+
+.keyPadItem {
+    border-radius: 10px;
+    border-color: black;
+    background-color: #F1750A;
+}
+
+#numberZero {
+    grid-column: 2 / 2;
+}
+
+#productListContainer {
+    width: 100%;
+    height: 60%;
+
+    box-sizing: border-box;
+}
+
+#paymentContainer {
+    width: 100%;
+    height: 40%;
+
+    box-sizing: border-box;
 }
