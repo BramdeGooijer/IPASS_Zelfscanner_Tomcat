@@ -1,0 +1,41 @@
+.box {
+    border-style: solid;
+    border-color: red;
+}
+
+.box2 {
+    border-style: solid;
+    border-color: blue;
+}
+
+#gridcontainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+}
+
+#titlePart {
+    grid-column: 1 / 11;
+}
+
+#leftSide {
+    grid-column: 1 / 4;
+    /*height: 87.5vh;*/
+}
+
+#rightSide {
+    grid-column: 4 / 11;
+    /*height: 87.5vh;*/
+}
+
+#cameraBorder {
+    margin: auto;
+    width: 500px;
+    height: 375px;
+    border: 5px #333 solid;
+}
+
+#videoElement {
+    width: 500px;
+    height: 375px;
+    background-color: #666;
+}

@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>IPASS</title>
-        <link rel="stylesheet" href="./style/index.css">
-        <script type="module" src="js_src/app.js"></script>
-    </head>
-    <body>
-        <h1>Display Webcam Stream</h1>
-        <div id="container">
-            <video autoplay="true" id="videoElement">
-
-            </video>
+<head>
+    <meta charset="UTF-8">
+    <title>Zelfscanner</title>
+    <link rel="stylesheet" href="Styles/index.css">
+</head>
+<body>
+    <div id="gridcontainer">
+        <div class="box" id="titlePart">
+            <h1>Zelfscanner</h1>
         </div>
+        <div class="box" id="leftSide">
+            <div class="box2" id="cameraContainer">
+                <div id="cameraBorder">
+                    <video autoplay="true" id="videoElement">
 
-        <h3 id="Smile"></h3>
+                    </video>
+                </div>
+            </div>
+            <div class="box2" id="consoleContainer">
 
-        <script type="module" src="js_src/bodyscript.js"></script>
-    </body>
+            </div>
+        </div>
+        <div class="box" id="rightSide">
+            <h1>hio</h1>
+        </div>
+    </div>
+</body>
 </html>
