@@ -1,19 +1,11 @@
+/* HTML FORM STYLES */
 body {
     margin: 0;
     padding: 0;
     font-family: "Fira Sans Condensed",Arial,Georgia,serif;
 }
 
-.box {
-    border-style: solid;
-    border-color: red;
-}
-
-.box2 {
-    border-style: solid;
-    border-color: blue;
-}
-
+/* PARTITIONS */
 #gridcontainer {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -39,13 +31,20 @@ body {
     grid-row: 2 / 11;
 }
 
-#cameraContainer {
-    height: 45%;
-    box-sizing: border-box;
+/* DEV BOX STYLING*/
+.box {
+    border-style: solid;
+    border-color: red;
 }
 
-#keyPadContainer {
-    height: 55%;
+.box2 {
+    border-style: solid;
+    border-color: blue;
+}
+
+/* CAMERA */
+#cameraContainer {
+    height: 45%;
     box-sizing: border-box;
 }
 
@@ -56,6 +55,11 @@ body {
     box-sizing: border-box;
 }
 
+/* KEYPAD */
+#keyPadContainer {
+    height: 55%;
+    box-sizing: border-box;
+}
 
 #keyPad {
     display: grid;
@@ -120,6 +124,7 @@ body {
     grid-column: 2 / 2;
 }
 
+/* PRODUCT LIST */
 #productListContainer {
     width: 100%;
     height: 60%;
@@ -127,6 +132,7 @@ body {
     box-sizing: border-box;
 }
 
+/* PAYMENT */
 #paymentContainer {
     width: 100%;
     height: 40%;
