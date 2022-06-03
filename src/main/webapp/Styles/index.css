@@ -56,7 +56,7 @@ body {
 
 /* TITLE */
 #title {
-
+    font-size: 4vh;
 }
 
 /* CAMERA */
@@ -75,23 +75,25 @@ body {
 /* KEYPAD */
 #keyPadContainer {
     height: 55%;
+    padding: 1vh;
     box-sizing: border-box;
 }
 
 #keyPad {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    margin: 15px;
-    height: 95%;
-    width: 95%;
+    /*margin: 15px;*/
+    height: 100%;
+    width: 100%;
+    gap: 0.75vh;
 
     box-sizing: border-box;
 }
 
 #productCodeVeld {
-    font-size: 30px;
-    padding: 5px;
-    margin: 2px;
+    /*font-size: 30px;*/
+    /*padding: 5px;*/
+    /*margin: 2px;*/
     border-style: solid;
     grid-column: 1 / 5;
 
@@ -100,10 +102,10 @@ body {
 
 #backSpace {
     border-style: solid;
-    margin: 3px;
+    /*margin: 3px;*/
     text-align: center;
-    padding: 10% 0 0 0;
-    font-size: 50px;
+    /*padding: 10% 0 0 0;*/
+    /*font-size: 50px;*/
 }
 
 #enter {
@@ -111,20 +113,20 @@ body {
     text-align: center;
     grid-column: 4 /4;
     grid-row: 2 / 6;
-    margin: 3px;
+    /*margin: 3px;*/
 }
 
 #enterText {
-    margin: 90% 0%;
-    font-size: 50px;
+    /*margin: 90% 0%;*/
+    /*font-size: 50px;*/
 }
 
 .numberItem {
     border-style: solid;
     text-align: center;
-    margin: 3px;
-    font-size: 50px;
-    padding: 10% 0 0 0;
+    /*margin: 3px;*/
+    /*font-size: 50px;*/
+    /*padding: 10% 0 0 0;*/
 }
 
 .keyPadItem:hover {
@@ -135,6 +137,7 @@ body {
     border-radius: 10px;
     border-color: black;
     background-color: #F1750A;
+    font-size: 3vw;
 }
 
 #numberZero {
