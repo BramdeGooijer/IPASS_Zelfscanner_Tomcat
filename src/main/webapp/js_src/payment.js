@@ -21,6 +21,7 @@
 var myHeaders = new Headers();
 myHeaders.append("API-KEY", "nru7vQI56ZAoUCfeHVJINgVeUeDLqFsa");
 myHeaders.append("nru7vQI56ZAoUCfeHVJINgVeUeDLqFsa", "true");
+myHeaders.append("Access-Control-Allow-Origin", "https://ipass-zelfscanner.herokuapp.com")
 
 var requestOptions = {
     method: 'POST',
