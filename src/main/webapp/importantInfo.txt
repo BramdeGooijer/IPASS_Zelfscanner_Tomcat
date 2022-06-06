@@ -1,3 +1,0 @@
-{
-    "API-KEY": "nru7vQI56ZAoUCfeHVJINgVeUeDLqFsa"
-}
