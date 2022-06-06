@@ -1,34 +1,33 @@
-package Zelfscanner;
+package Zelfscanner.TestLab;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class Main {
+public class TikkieQrRequest {
     private static class RequestData {
         public String description;
-        public String expiryDate;
-        public String referenceId;
+        public String expiryDateTime;
+        public int amountInCents;
     }
-    public static void main(String[] args) throws IOException, InterruptedException, URISyntaxException {
+
+    public static void main(String[] args) throws Exception{
         HttpClient client = HttpClient.newBuilder().build();
 
         RequestData body = new RequestData();
-//        body.description = "test payment";
-//        body.expiryDate = "2022-02-05";
-//        body.referenceId = "test1";
+        body.description = "Testing the qr code in java";
+        body.expiryDateTime = "2022-06-07T12:00:00.000Z";
+        body.amountInCents = 1;
 
         ObjectMapper mapper = new ObjectMapper();
         HttpRequest req = HttpRequest.newBuilder()
+                .header("X-App-Token", "a28b5137-b598-4a66-9b72-dc03d3ae7273")
                 .header("API-KEY", "nru7vQI56ZAoUCfeHVJINgVeUeDLqFsa")
                 .header("Content-Type", "application/json")
-                .uri(new URI("https://api-sandbox.abnamro.com/v2/tikkie/sandboxapps"))
+                .uri(new URI("https://api-sandbox.abnamro.com/v2/tikkie/idealqrs"))
 
                 .POST(HttpRequest.BodyPublishers.ofString(mapper.writeValueAsString(body)))
                 .build();
