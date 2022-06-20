@@ -7,7 +7,24 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Fira Sans Condensed",Arial,Georgia,serif;
+    background: linear-gradient(-45deg, #5271ee, #19ff00, #ff6000, #ff0000);
+    background-size: 400% 400%;
+    animation: gradient 90s ease infinite;
 }
+
+/* achtergrond bewegend*/
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 
 /* PARTITIONS */
 #gridcontainer {
@@ -51,7 +68,7 @@ body {
 
 .box2 {
     border-style: solid;
-    border-color: blue;
+    border-color: #9900ff;
 }
 
 .box3 {

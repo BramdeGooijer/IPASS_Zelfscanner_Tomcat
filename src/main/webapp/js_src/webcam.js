@@ -2,7 +2,7 @@ import { loadQuagga } from './barcodeScanner.js';
 
 console.log('startup')
 
-let video = document.querySelector("#videoElement");
+let video = document.querySelector("#videoTag");
 
 if (navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia( { video: true })
