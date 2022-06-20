@@ -9,33 +9,6 @@ body {
     height: 100%;
 }
 
-#loginDiv {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 25rem;
-    width: 30rem;
-    margin: auto;
-    border-radius: 20px;
-    background-color: white;
-    /*padding: 2rem;*/
-    display: flex;
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    z-index: 101;
-}
-
-#loginForm {
-
-    position: absolute;
-    top: 55%;
-    transform: translate(0, -50%);
-    left: 10%;
-    font-size: 1.5rem;
-
-}
-
 #inloggenText {
     position: relative;
     left: 50%;
@@ -45,16 +18,12 @@ body {
 
 }
 
-.inputInfo {
-    font-size: 1.5rem;
-    margin: 0.2rem;
-}
-
-#formBtn {
-    margin-top: 2rem;
-}
-
 /* Inlog button responsive: https://www.youtube.com/watch?v=xnltEHWWjiM*/
+#btnDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 #BtnResp {
     position: relative;
@@ -67,12 +36,6 @@ body {
     font-weight: 400;
     padding: 10px 50px;
     transition: 0.5s;
-}
-
-#btnDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #BtnResp:hover {
@@ -135,7 +98,6 @@ body {
 }
 
 /*inlog form styling: https://www.instagram.com/p/CeVNDQ6NaTy/?utm_source=ig_web_copy_link*/
-
 .container {
     position: absolute;
     top: 50%;
@@ -145,21 +107,6 @@ body {
     background-color: white;
     padding: 20px 40px;
     border-radius: 5px;
-
-    /*position: absolute;*/
-    /*top: 50%;*/
-    /*left: 50%;*/
-    /*transform: translate(-50%, -50%);*/
-    /*height: 25rem;*/
-    /*width: 30rem;*/
-    /*margin: auto;*/
-    /*border-radius: 20px;*/
-    /*background-color: white;*/
-    /*!*padding: 2rem;*!*/
-    /*display: flex;*/
-    /*!*justify-content: center;*!*/
-    /*!*align-items: center;*!*/
-    /*z-index: 101;*/
 }
 
 .container h1 {
@@ -170,26 +117,6 @@ body {
 .container a {
     text-decoration: none;
     color: blue;
-}
-
-.btn {
-    cursor: pointer;
-    display: inline-block;
-    width: 100%;
-    background: lightblue;
-    padding: 15px;
-    font-family: "Muli", sans-serif;
-    font-size: 16px;
-    border: 0;
-    border-radius: 5px;
-}
-
-.btn:focus {
-    outline: 0;
-}
-
-.btn:active {
-    transform: scale(0.98);
 }
 
 .text {
@@ -210,7 +137,7 @@ body {
     width: 100%;
     padding: 15px 0;
     font-size: 18px;
-    color: blue;
+    color: black;
 }
 
 .form-control input:focus,
@@ -240,7 +167,6 @@ body {
 }
 
 /*Css background animation: https://codepen.io/mohaiman/pen/MQqMyo*/
-
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 
 *{

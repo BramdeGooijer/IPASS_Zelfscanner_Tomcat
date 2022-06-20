@@ -19,29 +19,17 @@
             <li></li>
             <li></li>
         </ul>
-<!--        <div id="loginDiv">-->
-<!--            <h2 id="inloggenText">Inloggen</h2>-->
-<!--            <form id="loginForm">-->
-<!--                <label for="gebruikersnaamInput">Gebruikersnaam</label><br>-->
-<!--                <input type="text" placeholder="gebruikersnaam" name="username" class="inputInfo" id="gebruikersnaamInput"><br>-->
-<!--                <label for="wachtwoordInput">Wachtwoord</label><br>-->
-<!--                <input type="password" placeholder="wachtwoord" name="password" class="inputInfo" id="wachtwoordInput"><br>-->
-<!--&lt;!&ndash;                <button class="inputInfo" id="formBtn">Inloggen</button>&ndash;&gt;-->
-<!--                <a href="#" id="BtnResp" style="&#45;&#45;clr:#1e9bff"><span>Inloggen</span><i></i></a>-->
-<!--            </form>-->
-<!--        </div>-->
         <div class="container">
             <h1>Sign In</h1>
             <form>
                 <div class="form-control">
-                    <input type="text" required>
+                    <input name="username" type="text" required>
                     <label>Your Username</label>
                 </div>
                 <div  class="form-control">
-                    <input type="password" required>
+                    <input name="password" type="password" required>
                     <label>Your Password</label>
                 </div>
-<!--                <button class="btn">Submit</button>-->
                 <div id="btnDiv">
                     <a href="#" id="BtnResp" style="--clr:#1e80ff"><span>Inloggen</span><i></i></a>
                 </div>
@@ -51,7 +39,7 @@
         </div>
     </div>
 
+    <!--input field script-->
     <script type="module" src="js_src/inlogForm.js"></script>
-
 </body>
 </html>
