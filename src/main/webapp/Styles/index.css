@@ -54,6 +54,11 @@ body {
     border-color: blue;
 }
 
+.box3 {
+    border-style: solid;
+    border-color: lawngreen;
+}
+
 /* TITLE */
 #title {
     font-size: 4vh;
@@ -149,6 +154,10 @@ body {
     width: 100%;
     height: 60%;
 
+    box-sizing: border-box;
+}
+
+#winkelmandItems {
     box-sizing: border-box;
 }
 
