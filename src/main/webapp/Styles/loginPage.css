@@ -62,11 +62,17 @@ body {
     color: black;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 0.5em;
+    font-size: 1.65em;
     letter-spacing: 0.1em;
     font-weight: 400;
-    padding: 10px 30px;
+    padding: 10px 50px;
     transition: 0.5s;
+}
+
+#btnDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #BtnResp:hover {
@@ -128,6 +134,111 @@ body {
     left: 80%;
 }
 
+/*inlog form styling: https://www.instagram.com/p/CeVNDQ6NaTy/?utm_source=ig_web_copy_link*/
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 102;
+    background-color: white;
+    padding: 20px 40px;
+    border-radius: 5px;
+
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%, -50%);*/
+    /*height: 25rem;*/
+    /*width: 30rem;*/
+    /*margin: auto;*/
+    /*border-radius: 20px;*/
+    /*background-color: white;*/
+    /*!*padding: 2rem;*!*/
+    /*display: flex;*/
+    /*!*justify-content: center;*!*/
+    /*!*align-items: center;*!*/
+    /*z-index: 101;*/
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.container a {
+    text-decoration: none;
+    color: blue;
+}
+
+.btn {
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    background: lightblue;
+    padding: 15px;
+    font-family: "Muli", sans-serif;
+    font-size: 16px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.text {
+    margin-top: 30px;
+}
+
+.form-control {
+    position: relative;
+    margin: 20px 0 40px;
+    width: 300px;
+}
+
+.form-control input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px blue solid;
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: blue;
+}
+
+.form-control input:focus,
+.form-control input:valid {
+    outline: 0;
+    border-bottom-color: blue;
+}
+
+.form-control label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    pointer-events: none;
+}
+
+.form-control label span {
+    display: inline-block;
+    font-size: 18px;
+    min-width: 5px;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus + label span,
+.form-control input:valid + label span {
+    color: blue;
+    transform: translateY(-30px);
+}
+
 /*Css background animation: https://codepen.io/mohaiman/pen/MQqMyo*/
 
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
@@ -157,7 +268,7 @@ body{
 
 
 .area{
-    background: #666af1;
+    background: blue;
     background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
     width: 100%;
     height:100vh;
