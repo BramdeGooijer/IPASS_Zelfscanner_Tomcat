@@ -216,7 +216,7 @@ body{
     list-style: none;
     width: 20px;
     height: 20px;
-    background: rgba(6, 255, 0, 0.2);
+    background: rgba(0, 249, 255, 0.56);
     animation: animate 25s linear infinite;
     bottom: -150px;
 
