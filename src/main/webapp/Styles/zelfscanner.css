@@ -72,7 +72,7 @@ body {
 }
 
 #productContainer::-webkit-scrollbar {
-    width: 0.8vw;
+    width: 10px;
 }
 
 #productContainer::-webkit-scrollbar-thumb {
@@ -101,7 +101,8 @@ body {
 .itemAmount {
     position: absolute;
     display: flex;
-    right: 5%;
+    right: 0;
+    width: 40%;
 }
 
 .decrease {
@@ -114,6 +115,19 @@ body {
 
 .amount {
     background-color: grey;
+}
+
+.price {
+    position: relative;
+    background-color: grey;
+    width: 6rem;
+    border-radius: 20px;
+    text-align: center;
+    height: 2rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
 }
 
 .itemBubble {
