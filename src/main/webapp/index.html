@@ -2,54 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Zelfscanner</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-
-    <link rel="stylesheet" href="Styles/index.css">
-    <script src="/js_src/quagga.min.js"></script>
-    <script type="module" src="js_src/webcam.js"></script>
-    <script type="module" src="js_src/demoBetaling.js"></script>
+    <title>Zelfscanner - Login</title>
+    <link rel="stylesheet" href="Styles/loginPage.css">
 </head>
 <body>
-    <div id="gridcontainer">
-        <div class="box" id="titlePart">
-            <h1 id="title">Zelfscanner</h1>
-        </div>
-        <div class="box" id="leftSide">
-            <div class="box2" id="cameraContainer">
-                <video autoplay="true" id="videoElement"></video>
-            </div>
-            <div class="box2" id="keyPadContainer">
-                <div id="keyPad">
-                    <input class="keyPadItem" type="text" value="Productcode" id="productCodeVeld">
-                    <div class="numberItem keyPadItem">7</div>
-                    <div class="numberItem keyPadItem">8</div>
-                    <div class="numberItem keyPadItem">9</div>
-                    <div class="numberItem keyPadItem">4</div>
-                    <div class="numberItem keyPadItem">5</div>
-                    <div class="numberItem keyPadItem">6</div>
-                    <div class="numberItem keyPadItem">1</div>
-                    <div class="numberItem keyPadItem">2</div>
-                    <div class="numberItem keyPadItem">3</div>
-                    <div class="numberItem keyPadItem" id="numberZero">0</div>
-                    <div class="keyPadItem" id="backSpace">&lt;</div>
-                    <div class="keyPadItem" id="enter"><p id="enterText">Enter</p></div>
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="container">
+            <h1>Sign In</h1>
+            <form>
+                <div class="form-control">
+                    <input name="username" id="usernameInput" type="text" required>
+                    <label>Your Username</label>
                 </div>
-            </div>
-        </div>
-        <div class="box" id="rightSide">
-            <div class="box2" id="productListContainer">
-                <h1>Winkelmandje:</h1>
-                <div id="winkelmandItems" class="box3">
+                <div  class="form-control">
+                    <input name="password" id="passwordInput" type="password" required>
+                    <label>Your Password</label>
+                </div>
+                <div id="btnDiv">
+                    <a href="#" id="BtnResp" style="--clr:#1e80ff"><span>Inloggen</span><i></i></a>
+                </div>
+                <p class="text">Don't have an account? <a href="#">Create Account</a></p>
+            </form>
 
-                </div>
-            </div>
-            <div class="box2" id="paymentContainer">
-                <h1>paymentContainer</h1>
-                <button id="paymentBtn">Betaal</button>
-                <div id="qrCodeSpace"></div>
-            </div>
         </div>
     </div>
+
+    <!--input field script-->
+    <script type="module" src="js_src/inlogForm.js"></script>
 </body>
 </html>
