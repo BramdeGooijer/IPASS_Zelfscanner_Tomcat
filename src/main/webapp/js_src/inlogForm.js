@@ -1,6 +1,4 @@
 const labels = document.querySelectorAll(".form-control label");
-let username = document.querySelector("#usernameInput");
-let password = document.querySelector("#passwordInput");
 let submitBtn = document.querySelector("#BtnResp");
 
 submitBtn.addEventListener('click', login);
@@ -13,7 +11,9 @@ labels.forEach((label) => {
         .join("");
 });
 
-function login(username, password) {
+function login() {
+    let username = document.querySelector("#usernameInput").value;
+    let password = document.querySelector("#passwordInput").value;
     fetch('/restapi/login', {
         method: 'POST',
         headers: {
@@ -25,13 +25,14 @@ function login(username, password) {
         })
     }).then(response => {
         if (response.status === 401) {
-        //    handle foutieve username of password
-            console.log("foutieve dingen");
-            return;
+            window.alert('Username or password incorrect!')
+            return null;
         }
         return response.json();
     }).then(data => {
-        window.sessionStorage.setItem('BearerToken', 'Bearer ' + data.token);
-        window.location.replace('./zelfscanner.html');
+        if (data !== null) {
+            window.sessionStorage.setItem('BearerToken', 'Bearer ' + data.token);
+            window.location.replace('./zelfscanner.html');
+        }
     });
 }

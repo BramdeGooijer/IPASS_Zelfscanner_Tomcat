@@ -29,10 +29,11 @@ public class AuthenticationResource {
         }
     }
 
-    @GET
+    @POST
     @Path("/validate")
     @RolesAllowed("user")
     public Response validate() {
+        System.out.println("hij wordt gecalled");
         return Response.ok().build();
     }
 }
