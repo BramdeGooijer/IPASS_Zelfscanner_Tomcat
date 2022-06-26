@@ -1,7 +1,7 @@
-fetch('/restapi/login/validate', {
+fetch('/restapi/login/validat', {
     method: 'POST',
     headers: {
-        'Authorization': window.sessionStorage.getItem('BearerToken')
+        'Authorization': "Bearer " + window.sessionStorage.getItem('token')
     }
 })
     .then(response => {

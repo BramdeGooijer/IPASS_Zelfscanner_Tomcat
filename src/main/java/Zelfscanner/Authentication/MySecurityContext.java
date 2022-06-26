@@ -6,6 +6,7 @@ import io.jsonwebtoken.impl.crypto.MacProvider;
 import javax.ws.rs.core.SecurityContext;
 import java.security.Key;
 import java.security.Principal;
+import java.sql.Date;
 
 public class MySecurityContext implements SecurityContext {
     final static public Key key = MacProvider.generateKey();

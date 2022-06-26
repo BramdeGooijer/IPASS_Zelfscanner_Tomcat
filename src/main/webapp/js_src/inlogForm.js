@@ -27,12 +27,14 @@ function login() {
         if (response.status === 401) {
             window.alert('Username or password incorrect!')
             return null;
+        } else if (response.status === 200) {
+            return response.json();
         }
-        return response.json();
     }).then(data => {
         if (data !== null) {
-            window.sessionStorage.setItem('BearerToken', 'Bearer ' + data.token);
-            window.location.replace('./zelfscanner.html');
+            console.log("ingelogd")
+            window.sessionStorage.setItem('token', data.token);
+            // window.location.replace('./zelfscanner.html');
         }
     });
 }
