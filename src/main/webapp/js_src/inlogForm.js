@@ -34,7 +34,7 @@ function login() {
         if (data !== null) {
             console.log("ingelogd")
             window.sessionStorage.setItem('token', data.token);
-            // window.location.replace('./zelfscanner.html');
+            window.location.replace('./zelfscanner.html');
         }
     });
 }
