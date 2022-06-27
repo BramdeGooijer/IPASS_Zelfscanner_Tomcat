@@ -8,10 +8,11 @@ public class Product implements Serializable {
     private String beschrijving;
     private String barcode;
 
-    public Product(String naam, double prijs, String beschrijving) {
+    public Product(String naam, double prijs, String beschrijving, String barcode) {
         this.naam = naam;
         this.prijs = prijs;
         this.beschrijving = beschrijving;
+        this.barcode = barcode;
     }
 
     public double getPrijs() {

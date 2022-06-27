@@ -19,11 +19,11 @@ public class Winkel implements Serializable {
     }
 
     private Winkel() {
-        allProduct.add(new Product("Appel", 1.00, "Rode appel"));
-        allProduct.add(new Product("Peer", 0.50, "Zoete peer"));
-        allProduct.add(new Product("Banaan", 2.00, "Rijpe banaan"));
-        allProduct.add(new Product("Kiwi", 0.10, "Goedkope kiwi"));
-        allProduct.add(new Product("Ananas", 5.00, "Buitenlandse ananas"));
+        allProduct.add(new Product("Appel", 1.00, "Rode appel", "IPASS-Appel"));
+        allProduct.add(new Product("Peer", 0.50, "Zoete peer", "IPASS-Peer"));
+        allProduct.add(new Product("Banaan", 2.00, "Rijpe banaan", "IPASS-Banaan"));
+        allProduct.add(new Product("Kiwi", 0.10, "Goedkope kiwi", "IPASS-Kiwi"));
+        allProduct.add(new Product("Ananas", 5.00, "Buitenlandse ananas", "IPASS-Ananas"));
     }
 
     public List<Product> getAllProduct() {
