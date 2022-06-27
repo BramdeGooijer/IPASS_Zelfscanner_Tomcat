@@ -1,5 +1,7 @@
 package Zelfscanner.Domeinmodel;
 
+import javassist.NotFoundException;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +30,12 @@ public class Winkel implements Serializable {
         return allProduct;
     }
 
-    public Product getProductByName() {
-//        maak hier een getproductbyname
-        return null;
+    public Product getProductByBarcode(String barcode) throws NotFoundException {
+        for (Product perProduct : allProduct) {
+            if (perProduct.getBarcode().equals(barcode)) {
+                return perProduct;
+            }
+        }
+        throw new NotFoundException("Product bestaat niet!");
     }
 }
