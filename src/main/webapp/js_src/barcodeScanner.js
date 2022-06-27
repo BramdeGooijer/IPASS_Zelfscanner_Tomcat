@@ -76,15 +76,17 @@ function handleBarcode(barcode) {
                   priceDiv.classList.add("price");
                   const decreaseDiv = document.createElement("div");
                   decreaseDiv.appendChild(document.createTextNode("-"));
+                  decreaseDiv.setAttribute('id', `${data.barcode}DecreaseBtn`);
                   decreaseDiv.classList.add("decrease");
                   decreaseDiv.classList.add("itemBubble");
                   const amountDiv = document.createElement("div");
                   amountDiv.appendChild(document.createTextNode(amount));
-                  amountDiv.setAttribute('id', `${data.naam}Amount`);
+                  amountDiv.setAttribute('id', `${data.barcode}Amount`);
                   amountDiv.classList.add("amount");
                   amountDiv.classList.add("itemBubble");
                   const increaseDiv = document.createElement("div");
                   increaseDiv.appendChild(document.createTextNode("+"));
+                  increaseDiv.setAttribute('id', `${data.barcode}IncreaseBtn`);
                   increaseDiv.classList.add("increase");
                   increaseDiv.classList.add("itemBubble");
 
@@ -94,6 +96,32 @@ function handleBarcode(barcode) {
                   itemAmountDiv.appendChild(increaseDiv);
 
                   ul.appendChild(li);
+
+                  let barcode = data.barcode;
+                  let minknop = document.querySelector(`#${barcode}DecreaseBtn`);
+                  let plusknop = document.querySelector(`#${barcode}IncreaseBtn`);
+                  let productAmount = document.querySelector(`#${barcode}Amount`);
+
+                  minknop.addEventListener('click', () => {
+                      for (let i = 0; i < boodschappenlijst.length; i++) {
+                          if (boodschappenlijst[i][0] === barcode) {
+                              boodschappenlijst[i][1]--;
+                              productAmount.textContent = boodschappenlijst[i][1];
+                          }
+                      }
+                      console.log(boodschappenlijst);
+                  })
+
+                  plusknop.addEventListener('click', () => {
+                      for (let i = 0; i < boodschappenlijst.length; i++) {
+                          if (boodschappenlijst[i][0] === barcode) {
+                              boodschappenlijst[i][1]++;
+                              productAmount.textContent = boodschappenlijst[i][1];
+                          }
+                      }
+                      console.log(boodschappenlijst);
+                  })
+
               }
 
               console.log(boodschappenlijst);
@@ -101,3 +129,23 @@ function handleBarcode(barcode) {
     })
 
 }
+
+// function addListeners() {
+//     for (let i = 0; i < boodschappenlijst.length; i++) {
+//         let barcode = boodschappenlijst[i][0];
+//
+//         let minKnop = document.querySelector(`#${barcode}DecreaseBtn`)
+//
+//         minKnop.addEventListener('click', () => {
+//             for (let i = 0; i < boodschappenlijst.length; i++) {
+//                 if (boodschappenlijst[i][0] === barcode) {
+//                     boodschappenlijst[i][1]--;
+//                 }
+//             }
+//
+//             console.log(boodschappenlijst);
+//         });
+//
+//         barcode.addEventListener'click'
+//     }
+// }
