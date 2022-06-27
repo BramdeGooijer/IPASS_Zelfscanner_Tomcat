@@ -26,6 +26,7 @@ public class ProductResource {
             response.naam = product.getNaam();
             response.beschrijving = product.getBeschrijving();
             response.barcode = product.getBarcode();
+            response.foutmelding = "ok";
 
             return Response.ok(response).build();
         } catch (NotFoundException e) {

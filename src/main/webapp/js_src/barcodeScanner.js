@@ -28,36 +28,51 @@ Quagga.onDetected(function(result) {
 function handleBarcode(barcode) {
     //fetch hier naar de resource die de info door geeft van het product
 
-    const ul = document.querySelector("#items");
+    fetch(`/restapi/product/${barcode}`)
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            } else if (response.status === 404) {
+                console.log('product niet gevonden');
+                return null;
+            }
+        }).then(data => {
+          if (data !== null) {
+              console.log(data);
 
-    const li = document.createElement("li");
-    li.classList.add("item");
-    li.appendChild(document.createTextNode(barcode));
+              const ul = document.querySelector("#items");
 
-    const itemAmountDiv = document.createElement("div");
-    itemAmountDiv.classList.add("itemAmount");
-    li.appendChild(itemAmountDiv);
+              const li = document.createElement("li");
+              li.classList.add("item");
+              li.appendChild(document.createTextNode(data.naam));
 
-    const priceDiv = document.createElement("div");
-    priceDiv.appendChild(document.createTextNode("€2000000000.00"));
-    priceDiv.classList.add("price");
-    const decreaseDiv = document.createElement("div");
-    decreaseDiv.appendChild(document.createTextNode("-"));
-    decreaseDiv.classList.add("decrease");
-    decreaseDiv.classList.add("itemBubble");
-    const amountDiv = document.createElement("div");
-    amountDiv.appendChild(document.createTextNode("0"));
-    amountDiv.classList.add("amount");
-    amountDiv.classList.add("itemBubble");
-    const increaseDiv = document.createElement("div");
-    increaseDiv.appendChild(document.createTextNode("+"));
-    increaseDiv.classList.add("increase");
-    increaseDiv.classList.add("itemBubble");
+              const itemAmountDiv = document.createElement("div");
+              itemAmountDiv.classList.add("itemAmount");
+              li.appendChild(itemAmountDiv);
 
-    itemAmountDiv.appendChild(priceDiv);
-    itemAmountDiv.appendChild(decreaseDiv);
-    itemAmountDiv.appendChild(amountDiv);
-    itemAmountDiv.appendChild(increaseDiv);
+              const priceDiv = document.createElement("div");
+              priceDiv.appendChild(document.createTextNode("€" + data.prijs));
+              priceDiv.classList.add("price");
+              const decreaseDiv = document.createElement("div");
+              decreaseDiv.appendChild(document.createTextNode("-"));
+              decreaseDiv.classList.add("decrease");
+              decreaseDiv.classList.add("itemBubble");
+              const amountDiv = document.createElement("div");
+              amountDiv.appendChild(document.createTextNode("0"));
+              amountDiv.classList.add("amount");
+              amountDiv.classList.add("itemBubble");
+              const increaseDiv = document.createElement("div");
+              increaseDiv.appendChild(document.createTextNode("+"));
+              increaseDiv.classList.add("increase");
+              increaseDiv.classList.add("itemBubble");
 
-    ul.appendChild(li);
+              itemAmountDiv.appendChild(priceDiv);
+              itemAmountDiv.appendChild(decreaseDiv);
+              itemAmountDiv.appendChild(amountDiv);
+              itemAmountDiv.appendChild(increaseDiv);
+
+              ul.appendChild(li);
+          }
+    })
+
 }
