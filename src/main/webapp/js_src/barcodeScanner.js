@@ -104,7 +104,7 @@ function handleBarcode(barcode) {
 
                   minknop.addEventListener('click', () => {
                       for (let i = 0; i < boodschappenlijst.length; i++) {
-                          if (boodschappenlijst[i][0] === barcode) {
+                          if (boodschappenlijst[i][0] === barcode && boodschappenlijst[i][1] > 0) {
                               boodschappenlijst[i][1]--;
                               productAmount.textContent = boodschappenlijst[i][1];
                           }
