@@ -30,7 +30,7 @@ public class AuthenticationResource {
     }
 
     @POST
-    @Path("/validat")
+    @Path("/validateToken")
     @RolesAllowed("gebruiker")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)

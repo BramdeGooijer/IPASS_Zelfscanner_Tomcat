@@ -1,4 +1,4 @@
-fetch('/restapi/login/validat', {
+fetch('/restapi/login/validateToken', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
