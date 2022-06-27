@@ -25,9 +25,10 @@ Quagga.onDetected(function(result) {
     handleBarcode(last_code);
 });
 
+let boodschappenlijst = [];
+
 function handleBarcode(barcode) {
     //fetch hier naar de resource die de info door geeft van het product
-
     fetch(`/restapi/product/${barcode}`)
         .then(response => {
             if (response.status === 200) {
@@ -38,40 +39,64 @@ function handleBarcode(barcode) {
             }
         }).then(data => {
           if (data !== null) {
-              console.log(data);
+              let amount = 0;
+              let toegevoegd = false;
 
-              const ul = document.querySelector("#items");
+              for (let i = 0; i < boodschappenlijst.length; i++) {
+                  if (boodschappenlijst[i][0] === data.naam) {
+                      boodschappenlijst[i][1]++;
+                      amount = boodschappenlijst[i][1];
 
-              const li = document.createElement("li");
-              li.classList.add("item");
-              li.appendChild(document.createTextNode(data.naam));
+                      let frontendAmount = document.querySelector(`#${data.naam}Amount`);
 
-              const itemAmountDiv = document.createElement("div");
-              itemAmountDiv.classList.add("itemAmount");
-              li.appendChild(itemAmountDiv);
+                      frontendAmount.textContent = amount;
 
-              const priceDiv = document.createElement("div");
-              priceDiv.appendChild(document.createTextNode("€" + data.prijs));
-              priceDiv.classList.add("price");
-              const decreaseDiv = document.createElement("div");
-              decreaseDiv.appendChild(document.createTextNode("-"));
-              decreaseDiv.classList.add("decrease");
-              decreaseDiv.classList.add("itemBubble");
-              const amountDiv = document.createElement("div");
-              amountDiv.appendChild(document.createTextNode("0"));
-              amountDiv.classList.add("amount");
-              amountDiv.classList.add("itemBubble");
-              const increaseDiv = document.createElement("div");
-              increaseDiv.appendChild(document.createTextNode("+"));
-              increaseDiv.classList.add("increase");
-              increaseDiv.classList.add("itemBubble");
+                      toegevoegd = true;
+                  }
+              }
 
-              itemAmountDiv.appendChild(priceDiv);
-              itemAmountDiv.appendChild(decreaseDiv);
-              itemAmountDiv.appendChild(amountDiv);
-              itemAmountDiv.appendChild(increaseDiv);
+              if (toegevoegd === false) {
+                  let item = [data.naam, 1];
+                  amount = 1;
+                  boodschappenlijst.push(item);
 
-              ul.appendChild(li);
+                  const ul = document.querySelector("#items");
+
+                  const li = document.createElement("li");
+                  li.classList.add("item");
+                  li.setAttribute('id', data.naam)
+                  li.appendChild(document.createTextNode(data.naam));
+
+                  const itemAmountDiv = document.createElement("div");
+                  itemAmountDiv.classList.add("itemAmount");
+                  li.appendChild(itemAmountDiv);
+
+                  const priceDiv = document.createElement("div");
+                  priceDiv.appendChild(document.createTextNode("€" + data.prijs));
+                  priceDiv.classList.add("price");
+                  const decreaseDiv = document.createElement("div");
+                  decreaseDiv.appendChild(document.createTextNode("-"));
+                  decreaseDiv.classList.add("decrease");
+                  decreaseDiv.classList.add("itemBubble");
+                  const amountDiv = document.createElement("div");
+                  amountDiv.appendChild(document.createTextNode(amount));
+                  amountDiv.setAttribute('id', `${data.naam}Amount`);
+                  amountDiv.classList.add("amount");
+                  amountDiv.classList.add("itemBubble");
+                  const increaseDiv = document.createElement("div");
+                  increaseDiv.appendChild(document.createTextNode("+"));
+                  increaseDiv.classList.add("increase");
+                  increaseDiv.classList.add("itemBubble");
+
+                  itemAmountDiv.appendChild(priceDiv);
+                  itemAmountDiv.appendChild(decreaseDiv);
+                  itemAmountDiv.appendChild(amountDiv);
+                  itemAmountDiv.appendChild(increaseDiv);
+
+                  ul.appendChild(li);
+              }
+
+              console.log(boodschappenlijst);
           }
     })
 
