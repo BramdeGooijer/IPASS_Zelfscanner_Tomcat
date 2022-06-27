@@ -43,7 +43,7 @@ function handleBarcode(barcode) {
               let toegevoegd = false;
 
               for (let i = 0; i < boodschappenlijst.length; i++) {
-                  if (boodschappenlijst[i][0] === data.naam) {
+                  if (boodschappenlijst[i][0] === data.barcode) {
                       boodschappenlijst[i][1]++;
                       amount = boodschappenlijst[i][1];
 
@@ -56,7 +56,7 @@ function handleBarcode(barcode) {
               }
 
               if (toegevoegd === false) {
-                  let item = [data.naam, 1];
+                  let item = [data.barcode, 1];
                   amount = 1;
                   boodschappenlijst.push(item);
 
