@@ -71,6 +71,12 @@
             <version>1.7.36</version>
         </dependency>
 
+        <!-- blobstorage -->
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-storage-blob</artifactId>
+            <version>12.16.0</version>
+        </dependency>
 
 
     </dependencies>

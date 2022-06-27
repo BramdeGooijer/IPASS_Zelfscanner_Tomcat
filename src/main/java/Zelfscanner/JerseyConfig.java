@@ -9,6 +9,7 @@ import javax.ws.rs.ApplicationPath;
 @ApplicationPath("/restapi")
 public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
+        packages("Zelfscanner.Persistentie");
         packages("Zelfscanner.Servlets");
         packages("Zelfscanner.Authentication");
         register(RolesAllowedDynamicFeature.class);
