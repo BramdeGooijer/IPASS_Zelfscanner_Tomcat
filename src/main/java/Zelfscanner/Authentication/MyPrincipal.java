@@ -11,6 +11,6 @@ public class MyPrincipal implements Principal {
 
     @Override
     public String getName() {
-        return this.name;
+        return name;
     }
 }

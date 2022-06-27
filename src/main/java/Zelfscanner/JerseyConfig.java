@@ -10,6 +10,7 @@ import javax.ws.rs.ApplicationPath;
 public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
         packages("Zelfscanner.Servlets");
+        packages("Zelfscanner.Authentication");
         register(RolesAllowedDynamicFeature.class);
     }
 }

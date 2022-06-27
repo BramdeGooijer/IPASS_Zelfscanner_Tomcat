@@ -12,6 +12,8 @@ import java.io.IOException;
 public class AuthenticationFilter implements ContainerRequestFilter {
     @Override
     public void filter(ContainerRequestContext containerRequestContext) throws IOException {
+        System.out.println("Filter wordt uitgevoerd!");
+
         String authHeader = containerRequestContext.getHeaderString("Authorization");
 
         if (authHeader == null) {

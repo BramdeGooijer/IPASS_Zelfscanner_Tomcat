@@ -3,6 +3,7 @@ package Zelfscanner.Servlets;
 import Zelfscanner.Domeinmodel.TikkieAPI;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -19,8 +20,10 @@ import java.net.http.HttpResponse;
 public class appToken {
 
     @GET
+//    @RolesAllowed("gebruiker")
     @Produces(MediaType.APPLICATION_JSON)
     public Response generateAppToken() throws URISyntaxException, IOException, InterruptedException {
+        System.out.println("ik word gecalled");
         HttpClient client = HttpClient.newBuilder().build();
 
         ObjectMapper mapper = new ObjectMapper();

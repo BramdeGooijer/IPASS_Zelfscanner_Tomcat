@@ -44,7 +44,7 @@ public class MySecurityContext implements SecurityContext {
 
     @Override
     public boolean isUserInRole(String s) {
-        if (this.principal.getName().equals("Bram") && s.equals("user")) {
+        if (this.principal.getName().equals("BramIsIngelogd") && s.equals("gebruiker")) {
             return true;
         }
         return false;
@@ -57,6 +57,6 @@ public class MySecurityContext implements SecurityContext {
 
     @Override
     public String getAuthenticationScheme() {
-        return null;
+        return "goeiemorgen";
     }
 }

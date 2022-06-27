@@ -16,7 +16,7 @@ public class AuthenticationResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response login(LoginInfo info) {
         if (info.username.equals("Bram") && info.password.equals("bram")) {
-            String token = MySecurityContext.generateToken("Bram");
+            String token = MySecurityContext.generateToken("BramIsIngelogd");
 
             LoginInfo response = new LoginInfo();
             response.token = token;
@@ -31,11 +31,11 @@ public class AuthenticationResource {
 
     @POST
     @Path("/validat")
-    @RolesAllowed("user")
+    @RolesAllowed("gebruiker")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response validate() {
-        System.out.println("hij wordt gecalled");
+        System.out.println("Validate token!");
         return Response.ok().build();
     }
 }

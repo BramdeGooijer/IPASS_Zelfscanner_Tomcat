@@ -1,7 +1,8 @@
 fetch('/restapi/login/validat', {
     method: 'POST',
     headers: {
-        'Authorization': "Bearer " + window.sessionStorage.getItem('token')
+        'Content-Type': 'application/json',
+        'Authorization': window.sessionStorage.getItem('token')
     }
 })
     .then(response => {
