@@ -47,7 +47,7 @@ function handleBarcode(barcode) {
                       boodschappenlijst[i][1]++;
                       amount = boodschappenlijst[i][1];
 
-                      let frontendAmount = document.querySelector(`#${data.naam}Amount`);
+                      let frontendAmount = document.querySelector(`#${data.barcode}Amount`);
 
                       frontendAmount.textContent = amount;
 
