@@ -162,3 +162,17 @@ function procesData() {
         })
     }
 }
+
+let paidBtn = document.querySelector('#betaaltBtn');
+
+paidBtn.addEventListener('click', clear);
+
+function clear() {
+    let ulRecap = document.querySelector('#ProductRecapList');
+    let ulBoodschappenlijst = document.querySelector('#items');
+
+    ulRecap.innerHTML = '';
+    ulBoodschappenlijst.innerHTML = '';
+
+    boodschappenlijst = [];
+}

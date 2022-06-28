@@ -5,12 +5,11 @@ let paymentScherm = document.querySelector('#paymentContainer');
 let witScherm = document.querySelector('#whiteBackground');
 let paidBtn = document.querySelector('#betaaltBtn');
 
-paymentBtn.addEventListener('click', toggle);
-paidBtn.addEventListener('click', toggle);
-paidBtn.addEventListener('click', clear);
+paymentBtn.addEventListener('click', toggleOn);
+paidBtn.addEventListener('click', toggleOff);
 
 
-function toggle() {
+function toggleOn() {
     if (boodschappenlijst.length === 0) {
         window.alert('scan eerst iets');
     } else {
@@ -19,10 +18,7 @@ function toggle() {
     }
 }
 
-function clear() {
-    let ul = document.querySelector('#ProductRecapList');
-
-    ul.innerHTML = '';
-
-    boodschappenlijst = [];
+function toggleOff() {
+    paymentScherm.classList.toggle('schuif-in');
+    witScherm.classList.toggle('schuif-in');
 }
