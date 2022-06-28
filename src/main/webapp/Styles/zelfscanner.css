@@ -70,6 +70,7 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 #productContainer {
@@ -156,6 +157,153 @@ body {
     line-height: 2rem;
     margin-left: 0.1rem;
     margin-right: 0.1rem;
+}
+
+/* paymentContainer */
+
+/*#whiteBackground {*/
+/*    position: absolute;*/
+
+/*    z-index: 101;*/
+
+/*    width: 50%;*/
+/*    height: 100%;*/
+
+/*    background-color: rgba(255, 255, 255, 0.57);*/
+/*    overflow: hidden;*/
+/*}*/
+
+body {
+    overflow-y: hidden;
+}
+
+#paymentContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(130%);
+    z-index: 102;
+
+    width: 40%;
+    height: 85%;
+
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 50px black;
+
+    transition: 1s;
+}
+
+#paymentContainer.schuif-in {
+    transform: translate(-50%, -50%) translateY(0);
+    transition: 1s;
+}
+
+#paymentContainerTitle {
+    text-align: center;
+    margin: 1rem;
+}
+
+#productRecapContainer {
+    position: relative;
+    width: 90%;
+    height: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    border-radius: 10px;
+    background-color: #a1a1a1;
+}
+
+#paymentQrCode {
+    position: relative;
+    background-color: blue;
+    width: 30%;
+    height: 30%;
+
+    left: 50%;
+    top: 5%;
+    transform: translateX(-50%);
+
+}
+
+#betaaltBtn {
+    position: relative;
+    background-color: blue;
+
+    width: 60%;
+    height: 7%;
+
+    left: 50%;
+    top: 10%;
+    border-radius: 90px;
+    transform: translateX(-50%);
+
+    text-align: center;
+}
+
+#betaaltBtn:hover {
+    background-color: #3e91ff;
+}
+
+#betaaltBtnText {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+#productRecapContainer {
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+#listContainer {
+    position: relative;
+    width: 95%;
+    height: 90%;
+
+    padding-left: 25px;
+
+    /*background-color: white;*/
+    overflow-y: scroll;
+}
+
+.recapListItemAmount {
+    position: absolute;
+    right: 50%;
+}
+
+.recapListItemPrice {
+    position: absolute;
+    left: 85%;
+}
+
+#listContainer::-webkit-scrollbar {
+    width: 10px;
+}
+
+#listContainer::-webkit-scrollbar-thumb {
+    background-color: #777;
+    border-radius: 10px;
+}
+
+#listContainer::-webkit-scrollbar-track {
+    background-color: #555;
+    border-radius: 10px;
+}
+
+#ProductRecapList {
+    font-size: 1rem;
+}
+
+#totaalPrijs {
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+
+    font-size: 1rem;
 }
 
 /* background */

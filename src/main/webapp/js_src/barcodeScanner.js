@@ -1,3 +1,5 @@
+export let boodschappenlijst = [];
+
 export function loadQuagga() {
     Quagga.init({
         inputStream : {
@@ -25,8 +27,6 @@ Quagga.onDetected(function(result) {
     handleBarcode(last_code);
 });
 
-let boodschappenlijst = [];
-
 function handleBarcode(barcode) {
     //fetch hier naar de resource die de info door geeft van het product
     fetch(`/restapi/product/${barcode}`)
@@ -34,6 +34,7 @@ function handleBarcode(barcode) {
             if (response.status === 200) {
                 return response.json();
             } else if (response.status === 404) {
+                //maak hier code voor product niet gevonden-9
                 console.log('product niet gevonden');
                 return null;
             }
@@ -107,6 +108,11 @@ function handleBarcode(barcode) {
                           if (boodschappenlijst[i][0] === barcode && boodschappenlijst[i][1] > 0) {
                               boodschappenlijst[i][1]--;
                               productAmount.textContent = boodschappenlijst[i][1];
+                              if (boodschappenlijst[i][1] === 0) {
+                                  let index = boodschappenlijst.indexOf(boodschappenlijst[i]);
+
+                                  boodschappenlijst.splice(index, 1);
+                              }
                           }
                       }
                       console.log(boodschappenlijst);
@@ -130,22 +136,26 @@ function handleBarcode(barcode) {
 
 }
 
-// function addListeners() {
-//     for (let i = 0; i < boodschappenlijst.length; i++) {
-//         let barcode = boodschappenlijst[i][0];
-//
-//         let minKnop = document.querySelector(`#${barcode}DecreaseBtn`)
-//
-//         minKnop.addEventListener('click', () => {
-//             for (let i = 0; i < boodschappenlijst.length; i++) {
-//                 if (boodschappenlijst[i][0] === barcode) {
-//                     boodschappenlijst[i][1]--;
-//                 }
-//             }
-//
-//             console.log(boodschappenlijst);
-//         });
-//
-//         barcode.addEventListener'click'
-//     }
-// }
+paymentBtn.addEventListener('click', procesData);
+
+function procesData() {
+    let productRecapList = document.querySelector('#ProductRecapList');
+    for (let i = 0; i < boodschappenlijst.length; i++) {
+        fetch(`/restapi/product/${boodschappenlijst[i][0]}`)
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    console.log('er is iets fout gegaan');
+                    return null;
+                }
+            }).then(data => {
+                if (data !== null) {
+                    let li = document.createElement('li');
+                    li.innerHTML = `<span class="recapListItemname">${data.naam}</span><span class="recapListItemAmount">${boodschappenlijst[i][1]}x</span><span class="recapListItemPrice">€${data.prijs}</span>`;
+
+                    productRecapList.appendChild(li);
+                }
+        })
+    }
+}

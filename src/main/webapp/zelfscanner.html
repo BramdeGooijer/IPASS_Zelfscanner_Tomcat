@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="Styles/zelfscanner.css">
     <script src="/js_src/quagga.min.js"></script>
     <script type="module" src="js_src/webcam.js"></script>
+    <script type="module" src="js_src/paymentScherm.js"></script>
 </head>
 <body>
 
@@ -44,7 +45,25 @@
 <!--                </li>-->
             </ul>
         </div>
-        <div type="button" id="paymentBtn"><h1 id="betaalBtnText">Betaal</h1></div>
+        <div id="paymentBtn"><h1 id="betaalBtnText">Betaal</h1></div>
+    </div>
+
+<!--    <div id="whiteBackground">-->
+<!--    </div>-->
+    <div id="paymentContainer">
+        <h1 id="paymentContainerTitle">- Betaling -</h1>
+        <div id="productRecapContainer">
+            <div id="listContainer">
+                <ul id="ProductRecapList">
+<!--                    <li><span class="recapListItemname">Appel</span><span class="recapListItemAmount">2x</span><span class="recapListItemPrice">€2.00</span></li>-->
+<!--                    <li><span class="recapListItemname">Peer</span><span class="recapListItemAmount">5x</span><span class="recapListItemPrice">€60.00</span></li>-->
+<!--                    <li><span class="recapListItemname">Banaan</span><span class="recapListItemAmount">17x</span><span class="recapListItemPrice">€1.00</span></li>-->
+                </ul>
+            </div>
+            <h1 id="totaalPrijs">Totaal:</h1>
+        </div>
+        <img src="#" id="paymentQrCode">
+        <div id="betaaltBtn"><h1 id="betaaltBtnText">Betaalt</h1></div>
     </div>
 </div>
 </body>
