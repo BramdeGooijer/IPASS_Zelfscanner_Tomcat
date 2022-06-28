@@ -4,6 +4,7 @@ import Zelfscanner.Domeinmodel.TikkieAPI;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -13,6 +14,11 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
+import java.util.TimeZone;
 
 @Path("generateQR")
 public class generateQR {
@@ -25,12 +31,18 @@ public class generateQR {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @RolesAllowed("gebruiker")
     public Response generateQrCode(RequestData data) throws URISyntaxException, IOException, InterruptedException {
         HttpClient client = HttpClient.newBuilder().build();
 
+        TimeZone tz = TimeZone.getTimeZone("UTC");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        df.setTimeZone(tz);
+        String nowAsISO = df.format(Date.from(Instant.now().plusSeconds(60)));
+
         RequestData body = new RequestData();
         body.description = data.description;
-        body.expiryDateTime = data.expiryDateTime;
+        body.expiryDateTime = nowAsISO;
         body.amountInCents = data.amountInCents;
 
         ObjectMapper mapper = new ObjectMapper();

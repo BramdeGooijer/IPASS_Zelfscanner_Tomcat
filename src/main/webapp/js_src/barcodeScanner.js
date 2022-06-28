@@ -57,7 +57,7 @@ function handleBarcode(barcode) {
               }
 
               if (toegevoegd === false) {
-                  let item = [data.barcode, 1];
+                  let item = [data.barcode, 1, data.prijs];
                   amount = 1;
                   boodschappenlijst.push(item);
 
@@ -142,23 +142,54 @@ function handleBarcode(barcode) {
 paymentBtn.addEventListener('click', procesData);
 
 function procesData() {
-    let productRecapList = document.querySelector('#ProductRecapList');
-    for (let i = 0; i < boodschappenlijst.length; i++) {
-        fetch(`/restapi/product/${boodschappenlijst[i][0]}`)
-            .then(response => {
-                if (response.status === 200) {
-                    return response.json();
-                } else {
-                    console.log('er is iets fout gegaan');
-                    return null;
-                }
-            }).then(data => {
+    if (boodschappenlijst.length > 0) {
+        let productRecapList = document.querySelector('#ProductRecapList');
+        for (let i = 0; i < boodschappenlijst.length; i++) {
+            fetch(`/restapi/product/${boodschappenlijst[i][0]}`)
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        console.log('er is iets fout gegaan');
+                        return null;
+                    }
+                }).then(data => {
                 if (data !== null) {
                     let li = document.createElement('li');
                     li.innerHTML = `<span class="recapListItemname">${data.naam}</span><span class="recapListItemAmount">${boodschappenlijst[i][1]}x</span><span class="recapListItemPrice">€${data.prijs}</span>`;
 
                     productRecapList.appendChild(li);
                 }
+            })
+        }
+
+        let recapTotaalPrijs = document.querySelector('#totaalPrijs');
+        recapTotaalPrijs.textContent = `Totaal: €${getTotaalPrijs()}`;
+
+        fetch('/restapi/generateQR', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': window.sessionStorage.getItem('token')
+            },
+            body: JSON.stringify({
+                description: 'IPASS Tikkie Betaling',
+                amountInCents: getTotaalPrijs() * 100
+            })
+        }).then(response => {
+            if (response.status === 200) {
+                return response.json();
+            } else {
+                console.log('something went wrong');
+                return null;
+            }
+        }).then(data => {
+            if (data !== null) {
+                console.log(data);
+                let qrCodeImg = document.querySelector('#paymentQrCode');
+
+                qrCodeImg.setAttribute('src', data.url);
+            }
         })
     }
 }
@@ -175,4 +206,15 @@ function clear() {
     ulBoodschappenlijst.innerHTML = '';
 
     boodschappenlijst = [];
+}
+
+function getTotaalPrijs() {
+    let TotaalprijsInCents = 0;
+
+    for (let i = 0; i < boodschappenlijst.length; i++) {
+        TotaalprijsInCents += boodschappenlijst[i][1] * boodschappenlijst[i][2];
+    }
+
+    console.log(TotaalprijsInCents);
+    return TotaalprijsInCents;
 }
