@@ -161,17 +161,25 @@ body {
 
 /* paymentContainer */
 
-/*#whiteBackground {*/
-/*    position: absolute;*/
+#whiteBackground {
+    position: absolute;
 
-/*    z-index: 101;*/
+    z-index: 100;
 
-/*    width: 50%;*/
-/*    height: 100%;*/
+    width: 100%;
+    height: 100%;
 
-/*    background-color: rgba(255, 255, 255, 0.57);*/
-/*    overflow: hidden;*/
-/*}*/
+    background-color: rgba(255, 255, 255, 0);
+    overflow: hidden;
+    transition: 1s;
+}
+
+#whiteBackground.schuif-in {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.57);
+    z-index: 101;
+    transition: 1s;
+}
 
 body {
     overflow-y: hidden;
