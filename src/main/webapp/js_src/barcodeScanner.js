@@ -112,6 +112,9 @@ function handleBarcode(barcode) {
                                   let index = boodschappenlijst.indexOf(boodschappenlijst[i]);
 
                                   boodschappenlijst.splice(index, 1);
+
+                                  let zeroItem = document.querySelector(`#${data.naam}`);
+                                  ul.removeChild(zeroItem);
                               }
                           }
                       }
