@@ -3,6 +3,8 @@ package Zelfscanner.Servlets;
 import Zelfscanner.Authentication.MySecurityContext;
 import Zelfscanner.Domeinmodel.LoginInfo;
 import Zelfscanner.Domeinmodel.LoginResponse;
+import Zelfscanner.Domeinmodel.Medewerker;
+import Zelfscanner.Domeinmodel.Winkel;
 
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
@@ -15,18 +17,20 @@ public class AuthenticationResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response login(LoginInfo info) {
-        if (info.username.equals("Bram") && info.password.equals("bram")) {
-            String token = MySecurityContext.generateToken("BramIsIngelogd");
+        for (Medewerker perMedewerker : Winkel.getWinkel().getAllMedewerkers()) {
+            if (perMedewerker.getUsername().equals("Admin"))
+            if (perMedewerker.getUsername().equals(info.username) && perMedewerker.getPassword().equals(info.password)) {
+                String token = MySecurityContext.generateToken("BramIsIngelogd");
 
-            LoginInfo response = new LoginInfo();
-            response.token = token;
+                LoginInfo response = new LoginInfo();
+                response.token = token;
 
-            return Response.ok(response).build();
-        } else {
-            LoginInfo response = new LoginInfo();
-            response.message = "Your username or password is incorrect!";
-            return Response.status(401).entity(response).build();
+                return Response.ok(response).build();
+            }
         }
+        LoginInfo response = new LoginInfo();
+        response.message = "Your username or password is incorrect!";
+        return Response.status(401).entity(response).build();
     }
 
     @POST

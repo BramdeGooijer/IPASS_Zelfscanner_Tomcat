@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Winkel implements Serializable {
     private List<Product> allProduct = new ArrayList<Product>();
+    private List<Medewerker> allMedewerkers = new ArrayList<Medewerker>();
 
     private static Winkel my_winkel = new Winkel();
     public static Winkel getWinkel() {
@@ -24,10 +25,16 @@ public class Winkel implements Serializable {
         allProduct.add(new Product("Banaan", 2.00, "Rijpe banaan", "IPASS-Banaan"));
         allProduct.add(new Product("Kiwi", 0.10, "Goedkope kiwi", "IPASS-Kiwi"));
         allProduct.add(new Product("Ananas", 5.00, "Buitenlandse ananas", "IPASS-Ananas"));
+        allMedewerkers.add(new Medewerker("Bram de Gooijer", "Bram", "bram"));
+        allMedewerkers.add(new Medewerker("Admin", "Admin", "admin"));
     }
 
     public List<Product> getAllProduct() {
         return allProduct;
+    }
+
+    public List<Medewerker> getAllMedewerkers() {
+        return allMedewerkers;
     }
 
     public Product getProductByBarcode(String barcode) throws NotFoundException {
@@ -37,5 +44,14 @@ public class Winkel implements Serializable {
             }
         }
         throw new NotFoundException("Product bestaat niet!");
+    }
+
+    public Medewerker getMedewerkerByName(String naam) throws NotFoundException {
+        for (Medewerker perMedewerker : allMedewerkers) {
+            if (perMedewerker.getNaam().equals(naam)) {
+                return perMedewerker;
+            }
+        }
+        throw new NotFoundException("Medewerker bestaat niet!");
     }
 }

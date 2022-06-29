@@ -1,6 +1,8 @@
 package Zelfscanner.Domeinmodel;
 
-public class Medewerker {
+import java.io.Serializable;
+
+public class Medewerker implements Serializable {
     private String naam;
     private String username;
     private String password;
