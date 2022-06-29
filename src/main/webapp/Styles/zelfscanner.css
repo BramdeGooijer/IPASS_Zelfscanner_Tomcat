@@ -314,6 +314,36 @@ body {
     font-size: 1rem;
 }
 
+/* Admindiv */
+
+#adminDiv {
+    position: absolute;
+    z-index: 101;
+    top: 0;
+    right: 25%;
+    transform: translateX(50%);
+
+    width: 40%;
+    height: 25%;
+
+    background-color: white;
+    border-radius: 0 0 20px 20px;
+
+}
+
+#logoutBtn {
+    position: absolute;
+
+    height: 20%;
+    width: 20%;
+    top: 5%;
+    right: 5%;
+
+    background-color: grey;
+    border-radius: 90px;
+    text-align: center;
+}
+
 /* background */
 
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
