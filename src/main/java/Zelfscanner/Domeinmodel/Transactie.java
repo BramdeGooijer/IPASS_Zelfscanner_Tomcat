@@ -1,6 +1,8 @@
 package Zelfscanner.Domeinmodel;
 
-public class Transactie {
+import java.io.Serializable;
+
+public class Transactie implements Serializable {
     private int totaalAantal;
     private double totaalPrijs;
 
