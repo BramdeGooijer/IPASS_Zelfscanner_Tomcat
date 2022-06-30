@@ -27,6 +27,36 @@ Quagga.onDetected(function(result) {
     handleBarcode(last_code);
 });
 
+let buttonClicked = false;
+let adminScherm = document.querySelector('#adminDiv');
+let escBtn = document.querySelector('#escapeBtn');
+let logoutBtn = document.querySelector('#logoutBtn');
+
+logoutBtn.addEventListener('click', () => {
+    window.sessionStorage.removeItem('token');
+    window.sessionStorage.removeItem('AdminToken');
+    fetch('/restapi/login/validateToken', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': window.sessionStorage.getItem('token')
+        }
+    })
+        .then(response => {
+            if (response.status === 403) {
+                console.log('status 403');
+                window.location.replace("./index.html");
+            } else if (response.status === 200) {
+                console.log("je bent ingelogd");
+            }
+        })
+})
+
+escBtn.addEventListener('click', () => {
+    buttonClicked = false;
+    adminScherm.classList.toggle('schuif-in');
+})
+
 function handleBarcode(barcode) {
     //fetch hier naar de resource die de info door geeft van het product
     fetch(`/restapi/product/${barcode}`)
@@ -40,96 +70,109 @@ function handleBarcode(barcode) {
             }
         }).then(data => {
           if (data !== null) {
-              let amount = 0;
-              let toegevoegd = false;
+              if (data.message === 'Admin') {
+                  // handle admin
+                  if (buttonClicked === false) {
+                      console.log(data.token);
+                      window.sessionStorage.setItem('AdminToken', data.token);
 
-              for (let i = 0; i < boodschappenlijst.length; i++) {
-                  if (boodschappenlijst[i][0] === data.barcode) {
-                      boodschappenlijst[i][1]++;
-                      amount = boodschappenlijst[i][1];
+                      adminScherm.classList.toggle('schuif-in');
+                      buttonClicked = true;
 
-                      let frontendAmount = document.querySelector(`#${data.barcode}Amount`);
-
-                      frontendAmount.textContent = amount;
-
-                      toegevoegd = true;
                   }
-              }
 
-              if (toegevoegd === false) {
-                  let item = [data.barcode, 1, data.prijs];
-                  amount = 1;
-                  boodschappenlijst.push(item);
+              } else {
+                  let amount = 0;
+                  let toegevoegd = false;
 
-                  const ul = document.querySelector("#items");
+                  for (let i = 0; i < boodschappenlijst.length; i++) {
+                      if (boodschappenlijst[i][0] === data.barcode) {
+                          boodschappenlijst[i][1]++;
+                          amount = boodschappenlijst[i][1];
 
-                  const li = document.createElement("li");
-                  li.classList.add("item");
-                  li.setAttribute('id', data.naam)
-                  li.appendChild(document.createTextNode(data.naam));
+                          let frontendAmount = document.querySelector(`#${data.barcode}Amount`);
 
-                  const itemAmountDiv = document.createElement("div");
-                  itemAmountDiv.classList.add("itemAmount");
-                  li.appendChild(itemAmountDiv);
+                          frontendAmount.textContent = amount;
 
-                  const priceDiv = document.createElement("div");
-                  priceDiv.appendChild(document.createTextNode("€" + data.prijs));
-                  priceDiv.classList.add("price");
-                  const decreaseDiv = document.createElement("div");
-                  decreaseDiv.appendChild(document.createTextNode("-"));
-                  decreaseDiv.setAttribute('id', `${data.barcode}DecreaseBtn`);
-                  decreaseDiv.classList.add("decrease");
-                  decreaseDiv.classList.add("itemBubble");
-                  const amountDiv = document.createElement("div");
-                  amountDiv.appendChild(document.createTextNode(amount));
-                  amountDiv.setAttribute('id', `${data.barcode}Amount`);
-                  amountDiv.classList.add("amount");
-                  amountDiv.classList.add("itemBubble");
-                  const increaseDiv = document.createElement("div");
-                  increaseDiv.appendChild(document.createTextNode("+"));
-                  increaseDiv.setAttribute('id', `${data.barcode}IncreaseBtn`);
-                  increaseDiv.classList.add("increase");
-                  increaseDiv.classList.add("itemBubble");
+                          toegevoegd = true;
+                      }
+                  }
 
-                  itemAmountDiv.appendChild(priceDiv);
-                  itemAmountDiv.appendChild(decreaseDiv);
-                  itemAmountDiv.appendChild(amountDiv);
-                  itemAmountDiv.appendChild(increaseDiv);
+                  if (toegevoegd === false) {
+                      let item = [data.barcode, 1, data.prijs];
+                      amount = 1;
+                      boodschappenlijst.push(item);
 
-                  ul.appendChild(li);
+                      const ul = document.querySelector("#items");
 
-                  let barcode = data.barcode;
-                  let minknop = document.querySelector(`#${barcode}DecreaseBtn`);
-                  let plusknop = document.querySelector(`#${barcode}IncreaseBtn`);
-                  let productAmount = document.querySelector(`#${barcode}Amount`);
+                      const li = document.createElement("li");
+                      li.classList.add("item");
+                      li.setAttribute('id', data.naam)
+                      li.appendChild(document.createTextNode(data.naam));
 
-                  minknop.addEventListener('click', () => {
-                      for (let i = 0; i < boodschappenlijst.length; i++) {
-                          if (boodschappenlijst[i][0] === barcode && boodschappenlijst[i][1] > 0) {
-                              boodschappenlijst[i][1]--;
-                              productAmount.textContent = boodschappenlijst[i][1];
-                              if (boodschappenlijst[i][1] === 0) {
-                                  let index = boodschappenlijst.indexOf(boodschappenlijst[i]);
+                      const itemAmountDiv = document.createElement("div");
+                      itemAmountDiv.classList.add("itemAmount");
+                      li.appendChild(itemAmountDiv);
 
-                                  boodschappenlijst.splice(index, 1);
+                      const priceDiv = document.createElement("div");
+                      priceDiv.appendChild(document.createTextNode("€" + data.prijs));
+                      priceDiv.classList.add("price");
+                      const decreaseDiv = document.createElement("div");
+                      decreaseDiv.appendChild(document.createTextNode("-"));
+                      decreaseDiv.setAttribute('id', `${data.barcode}DecreaseBtn`);
+                      decreaseDiv.classList.add("decrease");
+                      decreaseDiv.classList.add("itemBubble");
+                      const amountDiv = document.createElement("div");
+                      amountDiv.appendChild(document.createTextNode(amount));
+                      amountDiv.setAttribute('id', `${data.barcode}Amount`);
+                      amountDiv.classList.add("amount");
+                      amountDiv.classList.add("itemBubble");
+                      const increaseDiv = document.createElement("div");
+                      increaseDiv.appendChild(document.createTextNode("+"));
+                      increaseDiv.setAttribute('id', `${data.barcode}IncreaseBtn`);
+                      increaseDiv.classList.add("increase");
+                      increaseDiv.classList.add("itemBubble");
 
-                                  let zeroItem = document.querySelector(`#${data.naam}`);
-                                  ul.removeChild(zeroItem);
+                      itemAmountDiv.appendChild(priceDiv);
+                      itemAmountDiv.appendChild(decreaseDiv);
+                      itemAmountDiv.appendChild(amountDiv);
+                      itemAmountDiv.appendChild(increaseDiv);
+
+                      ul.appendChild(li);
+
+                      let barcode = data.barcode;
+                      let minknop = document.querySelector(`#${barcode}DecreaseBtn`);
+                      let plusknop = document.querySelector(`#${barcode}IncreaseBtn`);
+                      let productAmount = document.querySelector(`#${barcode}Amount`);
+
+                      minknop.addEventListener('click', () => {
+                          for (let i = 0; i < boodschappenlijst.length; i++) {
+                              if (boodschappenlijst[i][0] === barcode && boodschappenlijst[i][1] > 0) {
+                                  boodschappenlijst[i][1]--;
+                                  productAmount.textContent = boodschappenlijst[i][1];
+                                  if (boodschappenlijst[i][1] === 0) {
+                                      let index = boodschappenlijst.indexOf(boodschappenlijst[i]);
+
+                                      boodschappenlijst.splice(index, 1);
+
+                                      let zeroItem = document.querySelector(`#${data.naam}`);
+                                      ul.removeChild(zeroItem);
+                                  }
                               }
                           }
-                      }
-                      console.log(boodschappenlijst);
-                  })
+                          console.log(boodschappenlijst);
+                      })
 
-                  plusknop.addEventListener('click', () => {
-                      for (let i = 0; i < boodschappenlijst.length; i++) {
-                          if (boodschappenlijst[i][0] === barcode) {
-                              boodschappenlijst[i][1]++;
-                              productAmount.textContent = boodschappenlijst[i][1];
+                      plusknop.addEventListener('click', () => {
+                          for (let i = 0; i < boodschappenlijst.length; i++) {
+                              if (boodschappenlijst[i][0] === barcode) {
+                                  boodschappenlijst[i][1]++;
+                                  productAmount.textContent = boodschappenlijst[i][1];
+                              }
                           }
-                      }
-                      console.log(boodschappenlijst);
-                  })
+                          console.log(boodschappenlijst);
+                      })
+                  }
 
               }
 

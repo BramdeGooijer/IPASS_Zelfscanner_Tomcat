@@ -18,7 +18,6 @@ public class AuthenticationResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response login(LoginInfo info) {
         for (Medewerker perMedewerker : Winkel.getWinkel().getAllMedewerkers()) {
-            if (perMedewerker.getUsername().equals("Admin"))
             if (perMedewerker.getUsername().equals(info.username) && perMedewerker.getPassword().equals(info.password)) {
                 String token = MySecurityContext.generateToken("BramIsIngelogd");
 

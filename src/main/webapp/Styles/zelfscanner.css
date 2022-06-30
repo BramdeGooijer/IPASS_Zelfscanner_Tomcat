@@ -321,14 +321,19 @@ body {
     z-index: 101;
     top: 0;
     right: 25%;
-    transform: translateX(50%);
+    transform: translateX(50%) translateY(-130%);
 
     width: 40%;
     height: 25%;
 
     background-color: white;
     border-radius: 0 0 20px 20px;
+    transition: 1s;
+}
 
+#adminDiv.schuif-in {
+    transform: translateX(50%) translateY(0);
+    transition: 1s;
 }
 
 #logoutBtn {
