@@ -30,4 +30,8 @@ public class Product implements Serializable {
     public String getBarcode() {
         return barcode;
     }
+
+    public void setPrijs(double prijs) {
+        this.prijs = prijs;
+    }
 }

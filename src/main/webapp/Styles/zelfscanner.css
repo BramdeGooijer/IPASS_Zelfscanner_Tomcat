@@ -413,6 +413,37 @@ body {
     background-color: #009fff;
 }
 
+#adminForm {
+    position: absolute;
+
+    bottom: 5%;
+    left: 5%;
+    width: 90%;
+    height: 40%;
+
+    /*background-color: #cbcbcb;*/
+    display: grid;
+    grid-gap: 10px 20px;
+    grid-template-areas: "naam prijs barcode"
+                         "beschrijving beschrijving beschrijving";
+}
+
+#naamInput {
+    grid-area: naam;
+}
+
+#prijsInput {
+    grid-area: prijs;
+}
+
+#barcodeInput {
+    grid-area: barcode;
+}
+
+#beschrijvingInput {
+    grid-area: beschrijving;
+}
+
 /* background */
 
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');

@@ -46,6 +46,8 @@ public class MySecurityContext implements SecurityContext {
     public boolean isUserInRole(String s) {
         if (this.principal.getName().equals("BramIsIngelogd") && s.equals("gebruiker")) {
             return true;
+        } else if (this.principal.getName().equals("admin") && s.equals("admin")) {
+            return true;
         }
         return false;
     }
