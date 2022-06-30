@@ -67,4 +67,19 @@ public class ProductResource {
             return Response.status(401).entity("de prijs is niet gewijzigd er is iets mis gegaan").build();
         }
     }
+
+    @POST
+    @RolesAllowed("admin")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response productToevoegen(ProductResponse info) {
+        try {
+            Winkel.getWinkel().addProduct(info.naam, info.prijs, info.beschrijving, info.barcode);
+            return Response.ok("Het product is toegevoegd!").build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(401).entity("Illegal argument!").build();
+        } catch (Exception e) {
+            return Response.status(400).entity("something went wrong").build();
+        }
+    }
 }

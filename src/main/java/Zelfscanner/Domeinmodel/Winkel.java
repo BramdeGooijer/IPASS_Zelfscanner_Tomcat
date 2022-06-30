@@ -63,4 +63,14 @@ public class Winkel implements Serializable {
     public void addTransactie(int totaalAantal, double totaalPrijs) {
         allTransacties.add(new Transactie(totaalAantal, totaalPrijs));
     }
+
+    public void addProduct(String naam, double prijs, String beschrijving, String barcode) {
+        for (Product perProduct : allProduct) {
+            if (perProduct.getBarcode().equals(barcode)) {
+                throw new IllegalArgumentException("Product met deze barcode bestaat al");
+            }
+        }
+
+        allProduct.add(new Product(naam, prijs, beschrijving, barcode));
+    }
 }

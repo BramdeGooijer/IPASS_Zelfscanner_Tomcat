@@ -79,3 +79,43 @@ prijsWijzigenBtn.addEventListener('click', () => {
         })
     }
 })
+
+let productToevoegenBtn = document.querySelector('#productToevoegenBtn');
+
+productToevoegenBtn.addEventListener('click', () => {
+    let barcode = document.querySelector('#barcodeInput').value;
+    console.log(barcode);
+    let prijs = document.querySelector('#prijsInput').value;
+    console.log(prijs);
+    let naam = document.querySelector('#naamInput').value;
+    console.log(naam);
+    let beschrijving = document.querySelector('#beschrijvingInput').value;
+    console.log(beschrijving)
+
+    if (barcode === '' || prijs === '' || naam === '' || beschrijving === '') {
+        window.alert('Vul alle informatie velden in: naam, prijs, barcode en beschrijving!');
+    } else {
+        fetch('/restapi/product', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': window.sessionStorage.getItem('AdminToken')
+            },
+            body: JSON.stringify({
+                naam: naam,
+                prijs: prijs,
+                beschrijving: beschrijving,
+                barcode: barcode
+            })
+        }).then(response => {
+            if (response.status === 401) {
+                window.alert('Product Bestaat al');
+            } else if (response.status === 400) {
+                window.alert('er is iets mis gegaan!');
+            } else if (response.status === 200) {
+                window.alert('Het product is toegevoegd');
+            }
+        })
+    }
+
+})
