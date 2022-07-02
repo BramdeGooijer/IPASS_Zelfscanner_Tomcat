@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Zelfscanner - Hoofdpagina</title>
+    <title>Zelfscanner</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
     <link rel="stylesheet" href="Styles/zelfscanner.css">
@@ -29,7 +29,7 @@
     </ul>
 
     <div id="cameraDiv">
-        <video autoplay="true" id="videoTag"></video>
+        <video autoplay="autoplay" id="videoTag"></video>
     </div>
 
     <div id="itemContainer">
@@ -45,28 +45,28 @@
 <!--                </li>-->
             </ul>
         </div>
-        <div id="paymentBtn"><h1 id="betaalBtnText">Betaal</h1></div>
+        <div id="paymentBtn"><h1 id="betaalBtnText">Pay</h1></div>
     </div>
 
     <div id="adminDiv">
         <div id="escapeBtn"><h1 id="escapeText" class="centerText">Esc</h1></div>
-        <div id="productToevoegenBtn"><h1 id="productToevoegenText" class="centerText">Product toevoegen</h1></div>
-        <div id="prijsWijzigenBtn"><h1 id="prijsWijzigenText" class="centerText">Prijs wijzigen</h1></div>
-        <div id="productVerwijderenBtn"><h1 id="productVerwijderenText" class="centerText">Product verwijderen</h1></div>
+        <div id="productToevoegenBtn"><h1 id="productToevoegenText" class="centerText">Add product</h1></div>
+        <div id="prijsWijzigenBtn"><h1 id="prijsWijzigenText" class="centerText">Modify product</h1></div>
+        <div id="productVerwijderenBtn"><h1 id="productVerwijderenText" class="centerText">Delete product</h1></div>
         <div id="logoutBtn"><h1 id="logoutText" class="centerText">Logout</h1></div>
 
         <div id="adminForm">
-            <input type="text" placeholder="naam" id="naamInput">
-            <input type="number" placeholder="prijs" id="prijsInput">
-            <input type="text" placeholder="barcode" id="barcodeInput">
-            <input type="text" placeholder="beschrijving" id="beschrijvingInput">
+            <input type="text" placeholder="Name" id="naamInput">
+            <input type="number" placeholder="Price" id="prijsInput">
+            <input type="text" placeholder="Barcode" id="barcodeInput">
+            <input type="text" placeholder="Description" id="beschrijvingInput">
         </div>
     </div>
 
     <div id="whiteBackground">
     </div>
     <div id="paymentContainer">
-        <h1 id="paymentContainerTitle">- Betaling -</h1>
+        <h1 id="paymentContainerTitle">- Payment -</h1>
         <div id="productRecapContainer">
             <div id="listContainer">
                 <ul id="ProductRecapList">
@@ -75,10 +75,10 @@
 <!--                    <li><span class="recapListItemname">Banaan</span><span class="recapListItemAmount">17x</span><span class="recapListItemPrice">€1.00</span></li>-->
                 </ul>
             </div>
-            <h1 id="totaalPrijs">Totaal:</h1>
+            <h1 id="totaalPrijs">Total:</h1>
         </div>
-        <img src="#" id="paymentQrCode">
-        <div id="betaaltBtn"><h1 id="betaaltBtnText">Betaalt</h1></div>
+        <img src="/images/barcode_default.png" id="paymentQrCode">
+        <div id="betaaltBtn"><h1 id="betaaltBtnText">Paid</h1></div>
     </div>
 </div>
 </body>

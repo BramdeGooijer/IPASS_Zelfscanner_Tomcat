@@ -11,7 +11,7 @@ paidBtn.addEventListener('click', toggleOff);
 
 function toggleOn() {
     if (boodschappenlijst.length === 0) {
-        window.alert('scan eerst iets');
+        window.alert('Scan an item before paying!');
     } else {
         paymentScherm.classList.toggle('schuif-in');
         witScherm.classList.toggle('schuif-in');
@@ -56,7 +56,7 @@ prijsWijzigenBtn.addEventListener('click', () => {
     console.log(prijs);
 
     if (barcode === '' || prijs === '') {
-        window.alert('vul een geldige barcode en prijs in');
+        window.alert('Enter a valid barcode and price!');
     } else {
         fetch('/restapi/product/prijswijzigen', {
             method: 'PUT',
@@ -70,11 +70,11 @@ prijsWijzigenBtn.addEventListener('click', () => {
             })
         }).then(response => {
             if (response.status === 404) {
-                window.alert('product is niet gevonden / product bestaat niet!');
+                window.alert('Product not found / product does not exist');
             } else if (response.status === 401) {
-                window.alert('er is iets mis gegaan!');
+                window.alert('Something went wrong!');
             } else if (response.status === 200) {
-                window.alert('De prijs is gewijzigd');
+                window.alert('The price has been changed');
             }
         })
     }
@@ -93,7 +93,7 @@ productToevoegenBtn.addEventListener('click', () => {
     console.log(beschrijving)
 
     if (barcode === '' || prijs === '' || naam === '' || beschrijving === '') {
-        window.alert('Vul alle informatie velden in: naam, prijs, barcode en beschrijving!');
+        window.alert('Please enter all necessary information: name, price, barcode and description!');
     } else {
         fetch('/restapi/product', {
             method: 'POST',
@@ -109,11 +109,11 @@ productToevoegenBtn.addEventListener('click', () => {
             })
         }).then(response => {
             if (response.status === 401) {
-                window.alert('Product Bestaat al');
+                window.alert('The product with this barcode already exists');
             } else if (response.status === 400) {
-                window.alert('er is iets mis gegaan!');
+                window.alert('Something went wrong!');
             } else if (response.status === 200) {
-                window.alert('Het product is toegevoegd');
+                window.alert('The product has been added!');
             }
         })
     }
@@ -127,7 +127,7 @@ productVerwijderenBtn.addEventListener('click', () => {
     console.log(barcode);
 
     if (barcode === '') {
-        window.alert('Vul een barcode in!')
+        window.alert('Please enter a barcode!')
     } else {
         fetch(`/restapi/product/${barcode}`, {
             method: 'DELETE',
@@ -137,11 +137,11 @@ productVerwijderenBtn.addEventListener('click', () => {
             }
         }).then(response => {
             if (response.status === 200) {
-                window.alert('Het product is verwijderd!');
+                window.alert('The product has been removed!');
             } else if (response.status === 404) {
-                window.alert('Product niet gevonden / barcode incorrect!');
+                window.alert('Product not found / barcode incorrect!');
             } else if (response.status === 400) {
-                window.alert('Er is iets mis gegaan!');
+                window.alert('Something went wrong!');
             }
         });
     }

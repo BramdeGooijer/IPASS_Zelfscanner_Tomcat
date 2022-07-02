@@ -207,7 +207,7 @@ function procesData() {
         }
 
         let recapTotaalPrijs = document.querySelector('#totaalPrijs');
-        recapTotaalPrijs.textContent = `Totaal: €${getTotaalPrijs()}`;
+        recapTotaalPrijs.textContent = `Total: €${getTotaalPrijs()}`;
 
         fetch('/restapi/generateQR', {
             method: 'POST',
@@ -216,7 +216,7 @@ function procesData() {
                 'Authorization': window.sessionStorage.getItem('token')
             },
             body: JSON.stringify({
-                description: 'IPASS Tikkie Betaling',
+                description: 'IPASS Tikkie Transaction',
                 amountInCents: getTotaalPrijs() * 100
             })
         }).then(response => {
