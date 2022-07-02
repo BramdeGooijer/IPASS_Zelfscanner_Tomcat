@@ -73,4 +73,8 @@ public class Winkel implements Serializable {
 
         allProduct.add(new Product(naam, prijs, beschrijving, barcode));
     }
+
+    public void verwijderProduct(String barcode) throws NotFoundException {
+        allProduct.remove(getProductByBarcode(barcode));
+    }
 }

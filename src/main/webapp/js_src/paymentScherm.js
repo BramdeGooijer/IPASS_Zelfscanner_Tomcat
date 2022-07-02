@@ -119,3 +119,30 @@ productToevoegenBtn.addEventListener('click', () => {
     }
 
 })
+
+let productVerwijderenBtn = document.querySelector('#productVerwijderenBtn');
+
+productVerwijderenBtn.addEventListener('click', () => {
+    let barcode = document.querySelector('#barcodeInput').value;
+    console.log(barcode);
+
+    if (barcode === '') {
+        window.alert('Vul een barcode in!')
+    } else {
+        fetch(`/restapi/product/${barcode}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': window.sessionStorage.getItem('AdminToken')
+            }
+        }).then(response => {
+            if (response.status === 200) {
+                window.alert('Het product is verwijderd!');
+            } else if (response.status === 404) {
+                window.alert('Product niet gevonden / barcode incorrect!');
+            } else if (response.status === 400) {
+                window.alert('Er is iets mis gegaan!');
+            }
+        });
+    }
+})

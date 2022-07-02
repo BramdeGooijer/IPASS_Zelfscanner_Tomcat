@@ -49,6 +49,7 @@ public class ProductResource {
             return Response.status(404).entity(response).build();
         }
     }
+
     @PUT
     @Path("/prijswijzigen")
     @RolesAllowed("admin")
@@ -80,6 +81,22 @@ public class ProductResource {
             return Response.status(401).entity("Illegal argument!").build();
         } catch (Exception e) {
             return Response.status(400).entity("something went wrong").build();
+        }
+    }
+
+    @DELETE
+    @Path("{barcode}")
+    @RolesAllowed("admin")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response productVerwijderen(@PathParam("barcode") String barcode) {
+        try {
+            Winkel.getWinkel().verwijderProduct(barcode);
+            return Response.ok("Het product is verwijderd!").build();
+        } catch (NotFoundException e) {
+            return Response.status(404).entity("Product niet gevonden!").build();
+        } catch (Exception e) {
+            return Response.status(400).entity("Something went wrong!").build();
         }
     }
 }
