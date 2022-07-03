@@ -13,17 +13,17 @@ export function loadQuagga() {
         }
     }, function(err) {
         if (err) {
-            console.log(err);
+            // console.log(err);
             return
         }
-        console.log("Initialization finished. Ready to start");
+        // console.log("Initialization finished. Ready to start");
         Quagga.start();
     });
 }
 
 Quagga.onDetected(function(result) {
     let last_code = result.codeResult.code;
-    console.log(last_code);
+    // console.log(last_code);
     handleBarcode(last_code);
 });
 
@@ -44,10 +44,10 @@ logoutBtn.addEventListener('click', () => {
     })
         .then(response => {
             if (response.status === 403) {
-                console.log('status 403');
+                // console.log('status 403');
                 window.location.replace("./index.html");
             } else if (response.status === 200) {
-                console.log("je bent ingelogd");
+                // console.log("je bent ingelogd");
             }
         })
 })
@@ -73,7 +73,7 @@ function handleBarcode(barcode) {
               if (data.message === 'Admin') {
                   // handle admin
                   if (buttonClicked === false) {
-                      console.log(data.token);
+                      // console.log(data.token);
                       window.sessionStorage.setItem('AdminToken', data.token);
 
                       adminScherm.classList.toggle('schuif-in');
@@ -160,7 +160,7 @@ function handleBarcode(barcode) {
                                   }
                               }
                           }
-                          console.log(boodschappenlijst);
+                          // console.log(boodschappenlijst);
                       })
 
                       plusknop.addEventListener('click', () => {
@@ -170,13 +170,13 @@ function handleBarcode(barcode) {
                                   productAmount.textContent = boodschappenlijst[i][1];
                               }
                           }
-                          console.log(boodschappenlijst);
+                          // console.log(boodschappenlijst);
                       })
                   }
 
               }
 
-              console.log(boodschappenlijst);
+              // console.log(boodschappenlijst);
           }
     })
 
@@ -193,7 +193,7 @@ function procesData() {
                     if (response.status === 200) {
                         return response.json();
                     } else {
-                        console.log('er is iets fout gegaan');
+                        // console.log('er is iets fout gegaan');
                         return null;
                     }
                 }).then(data => {
@@ -223,12 +223,12 @@ function procesData() {
             if (response.status === 200) {
                 return response.json();
             } else {
-                console.log('something went wrong');
+                // console.log('something went wrong');
                 return null;
             }
         }).then(data => {
             if (data !== null) {
-                console.log(data);
+                // console.log(data);
                 let qrCodeImg = document.querySelector('#paymentQrCode');
 
                 qrCodeImg.setAttribute('src', data.url);
@@ -258,6 +258,6 @@ function getTotaalPrijs() {
         TotaalprijsInCents += boodschappenlijst[i][1] * boodschappenlijst[i][2];
     }
 
-    console.log(TotaalprijsInCents);
+    // console.log(TotaalprijsInCents);
     return TotaalprijsInCents;
 }

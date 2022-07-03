@@ -32,7 +32,7 @@ function login() {
         }
     }).then(data => {
         if (data !== null) {
-            console.log("ingelogd")
+            // console.log("ingelogd")
             window.sessionStorage.setItem('token', data.token);
             window.location.replace('./zelfscanner.html');
         }

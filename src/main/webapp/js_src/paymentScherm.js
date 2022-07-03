@@ -41,9 +41,9 @@ function toggleOff() {
         })
     }).then(response => {
         if(response.status === 200) {
-            console.log('ok');
+            // console.log('ok');
         } else {
-            console.log('iets anders');
+            // console.log('iets anders');
         }
     })
 }
@@ -64,9 +64,9 @@ let prijsWijzigenBtn = document.querySelector('#prijsWijzigenBtn');
 
 prijsWijzigenBtn.addEventListener('click', () => {
     let barcode = document.querySelector('#barcodeInput').value;
-    console.log(barcode);
+    // console.log(barcode);
     let prijs = document.querySelector('#prijsInput').value;
-    console.log(prijs);
+    // console.log(prijs);
 
     if (barcode === '' || prijs === '') {
         window.alert('Enter a valid barcode and price!');
@@ -98,13 +98,13 @@ let productToevoegenBtn = document.querySelector('#productToevoegenBtn');
 
 productToevoegenBtn.addEventListener('click', () => {
     let barcode = document.querySelector('#barcodeInput').value;
-    console.log(barcode);
+    // console.log(barcode);
     let prijs = document.querySelector('#prijsInput').value;
-    console.log(prijs);
+    // console.log(prijs);
     let naam = document.querySelector('#naamInput').value;
-    console.log(naam);
+    // console.log(naam);
     let beschrijving = document.querySelector('#beschrijvingInput').value;
-    console.log(beschrijving)
+    // console.log(beschrijving)
 
     if (barcode === '' || prijs === '' || naam === '' || beschrijving === '') {
         window.alert('Please enter all necessary information: name, price, barcode and description!');
@@ -138,7 +138,7 @@ let productVerwijderenBtn = document.querySelector('#productVerwijderenBtn');
 
 productVerwijderenBtn.addEventListener('click', () => {
     let barcode = document.querySelector('#barcodeInput').value;
-    console.log(barcode);
+    // console.log(barcode);
 
     if (barcode === '') {
         window.alert('Please enter a barcode!')

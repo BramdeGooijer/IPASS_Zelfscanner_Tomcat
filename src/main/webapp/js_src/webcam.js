@@ -1,6 +1,6 @@
 import { loadQuagga } from './barcodeScanner.js';
 
-console.log('startup')
+// console.log('startup')
 
 let video = document.querySelector("#videoTag");
 
@@ -10,13 +10,13 @@ if (navigator.mediaDevices.getUserMedia) {
             video.srcObject = stream;
         })
         .catch (function (error) {
-            console.log('something went wrong!')
+            // console.log('something went wrong!');
         })
 } else {
-    console.log('getUserMedia not supported!');
+    // console.log('getUserMedia not supported!');
 }
-console.log('camera done!')
+// console.log('camera done!')
 
 loadQuagga();
 
-console.log('quagga done');
+// console.log('quagga done');
