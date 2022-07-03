@@ -70,14 +70,13 @@ prijsWijzigenBtn.addEventListener('click', () => {
     if (barcode === '' || prijs === '') {
         window.alert('Enter a valid barcode and price!');
     } else {
-        fetch('/restapi/product/prijswijzigen', {
+        fetch(`/restapi/product/${barcode}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': window.sessionStorage.getItem('AdminToken')
             },
             body: JSON.stringify({
-                barcode: barcode,
                 prijs: prijs
             })
         }).then(response => {

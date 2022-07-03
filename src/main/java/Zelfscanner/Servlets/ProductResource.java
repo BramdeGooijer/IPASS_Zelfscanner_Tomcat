@@ -51,14 +51,14 @@ public class ProductResource {
     }
 
     @PUT
-    @Path("/prijswijzigen")
+    @Path("/{barcode}")
     @RolesAllowed("admin")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response wijzigPrijs(ProductResponse info) {
+    public Response wijzigPrijs(@PathParam("barcode") String barcode, ProductResponse info) {
         try {
-            System.out.println(info.barcode);
-            Product product = Winkel.getWinkel().getProductByBarcode(info.barcode);
+            System.out.println(barcode);
+            Product product = Winkel.getWinkel().getProductByBarcode(barcode);
             product.setPrijs(info.prijs);
 
             return Response.ok("de prijs is gewijzigd").build();
