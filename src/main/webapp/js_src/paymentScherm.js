@@ -47,6 +47,18 @@ function toggleOff() {
     })
 }
 
+function clearInputs() {
+    let barcode = document.querySelector('#barcodeInput');
+    let prijs = document.querySelector('#prijsInput');
+    let naam = document.querySelector('#naamInput');
+    let beschrijving = document.querySelector('#beschrijvingInput');
+
+    barcode.value = '';
+    prijs.value = '';
+    naam.value = '';
+    beschrijving.value = '';
+}
+
 let prijsWijzigenBtn = document.querySelector('#prijsWijzigenBtn');
 
 prijsWijzigenBtn.addEventListener('click', () => {
@@ -74,7 +86,9 @@ prijsWijzigenBtn.addEventListener('click', () => {
             } else if (response.status === 401) {
                 window.alert('Something went wrong!');
             } else if (response.status === 200) {
+                clearInputs();
                 window.alert('The price has been changed');
+
             }
         })
     }
@@ -113,6 +127,7 @@ productToevoegenBtn.addEventListener('click', () => {
             } else if (response.status === 400) {
                 window.alert('Something went wrong!');
             } else if (response.status === 200) {
+                clearInputs();
                 window.alert('The product has been added!');
             }
         })
@@ -137,6 +152,7 @@ productVerwijderenBtn.addEventListener('click', () => {
             }
         }).then(response => {
             if (response.status === 200) {
+                clearInputs();
                 window.alert('The product has been removed!');
             } else if (response.status === 404) {
                 window.alert('Product not found / barcode incorrect!');
