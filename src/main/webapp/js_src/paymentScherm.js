@@ -108,7 +108,7 @@ productToevoegenBtn.addEventListener('click', () => {
     if (barcode === '' || prijs === '' || naam === '' || beschrijving === '') {
         window.alert('Please enter all necessary information: name, price, barcode and description!');
     } else {
-        fetch('/restapi/product', {
+        fetch(`/restapi/product/${barcode}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -117,8 +117,7 @@ productToevoegenBtn.addEventListener('click', () => {
             body: JSON.stringify({
                 naam: naam,
                 prijs: prijs,
-                beschrijving: beschrijving,
-                barcode: barcode
+                beschrijving: beschrijving
             })
         }).then(response => {
             if (response.status === 401) {

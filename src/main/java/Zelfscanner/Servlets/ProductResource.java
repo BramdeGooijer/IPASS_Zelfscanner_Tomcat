@@ -70,12 +70,13 @@ public class ProductResource {
     }
 
     @POST
+    @Path("/{barcode}")
     @RolesAllowed("admin")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response productToevoegen(ProductResponse info) {
+    public Response productToevoegen(@PathParam("barcode") String barcode, ProductResponse info) {
         try {
-            Winkel.getWinkel().addProduct(info.naam, info.prijs, info.beschrijving, info.barcode);
+            Winkel.getWinkel().addProduct(info.naam, info.prijs, info.beschrijving, barcode);
             return Response.ok("Het product is toegevoegd!").build();
         } catch (IllegalArgumentException e) {
             return Response.status(401).entity("Illegal argument!").build();
