@@ -64,8 +64,8 @@ function handleBarcode(barcode) {
             if (response.status === 200) {
                 return response.json();
             } else if (response.status === 404) {
-                //maak hier code voor product niet gevonden-9
-                console.log('product niet gevonden');
+                //maak hier code voor product niet gevonden
+                window.alert('Product not found!');
                 return null;
             }
         }).then(data => {
