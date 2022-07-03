@@ -32,7 +32,8 @@ function toggleOff() {
     fetch('/restapi/transactie', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': window.sessionStorage.getItem('token')
         },
         body: JSON.stringify({
             totaalAantal: aantal,
