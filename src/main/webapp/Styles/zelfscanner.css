@@ -225,8 +225,8 @@ body {
 
 #paymentQrCode {
     position: relative;
-    width: 30%;
-    height: 30%;
+    width: 25vh;
+    height: 25vh;
     z-index: 106;
 
     left: 50%;
